@@ -34,7 +34,7 @@ const fakeForecast = {
   fakeData: true,
   latitude: 0,
   longitude: 0,
-  timezone: 'America/New_York',
+  timezone: 'America/Chicago',
   currently: {
     time: 0,
     summary: 'Clear',
