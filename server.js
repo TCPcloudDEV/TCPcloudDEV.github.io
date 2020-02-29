@@ -27,7 +27,7 @@ const FORECAST_DELAY = 0;
 
 // CODELAB: If running locally, set your Dark Sky API key here
 const API_KEY = "ddf1b811918d15a6742ed89efc6625fb";
-const BASE_URL = `https://api.darksky.net/forecast`;
+const BASE_URL = 'https://api.darksky.net/forecast';
 
 // Fake forecast data used if we can't reach the Dark Sky API
 const fakeForecast = {
@@ -140,7 +140,7 @@ function generateFakeForecast(location) {
  */
 function getForecast(req, resp) {
   const location = req.params.location || '44.7319100,-93.2177200';
-  const url = `${BASE_URL}/${API_KEY}/${location}`;
+  const url = '${BASE_URL}/${API_KEY}/${location}';
   fetch(url).then((resp) => {
     if (resp.status !== 200) {
       throw new Error(resp.statusText);
@@ -170,9 +170,9 @@ function startServer() {
   // Logging for each request
   app.use((req, resp, next) => {
     const now = new Date();
-    const time = `${now.toLocaleDateString()} - ${now.toLocaleTimeString()}`;
-    const path = `"${req.method} ${req.path}"`;
-    const m = `${req.ip} - ${time} - ${path}`;
+    const time = '${now.toLocaleDateString()} - ${now.toLocaleTimeString()}';
+    const path = '"${req.method} ${req.path}"';
+    const m = '${req.ip} - ${time} - ${path}';
     // eslint-disable-next-line no-console
     console.log(m);
     next();
