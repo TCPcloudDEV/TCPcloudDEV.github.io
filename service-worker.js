@@ -30,6 +30,12 @@ self.addEventListener('install', (evt) => {
   // CODELAB: Precache static resources here.
 
   self.skipWaiting();
+  evt.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log('[ServiceWorker] Pre-caching offline page');
+      return cache.addAll(FILES_TO_CACHE);
+    })
+   );
 });
 
 self.addEventListener('activate', (evt) => {
@@ -37,6 +43,17 @@ self.addEventListener('activate', (evt) => {
   // CODELAB: Remove previous cached data from disk.
 
   self.clients.claim();
+
+  evt.waitUntil(
+    caches.keys().then((keyList) => {
+      return Promise.all(keyList.map((key) => {
+        if (key !== CACHE_NAME) {
+          console.log('[ServiceWorker] Removing old cache', key);
+          return caches.delete(key);
+        }
+      }));
+    })
+   );
 });
 
 self.addEventListener('fetch', (evt) => {
@@ -44,3 +61,4 @@ self.addEventListener('fetch', (evt) => {
   // CODELAB: Add fetch event handler here.
 
 });
+
