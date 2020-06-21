@@ -38,6 +38,8 @@
   *  listeners.
   */
   function initClient() {
+     alert ("initClient");
+
     const CLIENT_ID =
       "405463250476-60n33ul1rrajp11mrimnp68og4qomueb.apps.googleusercontent.com";
     const DISCOVERY_DOCS = [
