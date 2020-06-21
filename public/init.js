@@ -152,6 +152,8 @@
   }
 
   function initApp(data) {
+    alert ("initApp");
+
     utils.hideLoader();
 
     window.expenseManager.expenseForm.init(
