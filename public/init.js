@@ -50,9 +50,9 @@
     const SCOPES =
       "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly";
 
-    gapi.client.setApiKey(API_KEY);
+    //gapi.client.setApiKey(API_KEY);
     
-    alert ("initClient 2");
+    alert ("initClient 3");
     
     gapi.client
       .init({
