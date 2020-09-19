@@ -9,6 +9,11 @@
   const formLoader = byID("form-loader");
   const snackbarContainer = byID("toast-container");
 
+    const cSHEET_NAME = "ECS_Sales (Responses)";
+    const cACCOUNT_RANGE = "Data!A2:A50";
+    const cCATEGORY_RANGE = "cfg!E5:E18";
+
+
   utils.hideLoader = utils.hideLoader.bind(null, forms, formLoader);
   utils.showLoader = utils.showLoader.bind(null, forms, formLoader);
 
@@ -40,7 +45,7 @@
   function initClient() {
     const CLIENT_ID =
       "405463250476-g6vgneqp01ht2pmv0mkqjr7qfds6k30l.apps.googleusercontent.com";
-    const API_KEY = "AIzaSyB9lsuRV2xUnKU4mXwho34IZlZVxwu5qwQ";
+    //const API_KEY = "AIzaSyB9lsuRV2xUnKU4mXwho34IZlZVxwu5qwQ";
     const DISCOVERY_DOCS = [
       "https://sheets.googleapis.com/$discovery/rest?version=v4",
       "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"
@@ -51,9 +56,7 @@
       "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly";
 
     //gapi.client.setApiKey(API_KEY);
-    
-    alert ("initClient 3");
-    
+        
     gapi.client
       .init({
         discoveryDocs: DISCOVERY_DOCS,
@@ -93,7 +96,7 @@
     utils.hideEl(authorizeButton);
     utils.showEl(signoutButton);
 
-    getSheetID("Expense Sheet")
+    getSheetID(cSHEET_NAME)
       .then(getCategoriesAndAccount, sheetNotFound)
       .then(initApp);
 
@@ -139,12 +142,10 @@
     */
   function getCategoriesAndAccount(sheetID) {
     return new Promise((resolve, reject) => {
-      const ACCOUNT_RANGE = "Data!A2:A50";
-      const CATEGORY_RANGE = "Data!E2:E50";
 
       gapi.client.sheets.spreadsheets.values
         .batchGet(
-          utils.batchGetRequestObj(sheetID, [ACCOUNT_RANGE, CATEGORY_RANGE])
+          utils.batchGetRequestObj(sheetID, [cACCOUNT_RANGE, cCATEGORY_RANGE])
         )
         .then(response => {
           const accounts = response.result.valueRanges[0].values[0];
@@ -155,8 +156,6 @@
   }
 
   function initApp(data) {
-    alert ("initApp");
-
     utils.hideLoader();
 
     window.expenseManager.expenseForm.init(
