@@ -41,7 +41,7 @@
      alert ("initClient");
 
     const CLIENT_ID =
-      "405463250476-g6vgneqp01ht2pmv0mkqjr7qfds6k30l.apps.googleusercontent.com;
+      "405463250476-g6vgneqp01ht2pmv0mkqjr7qfds6k30l.apps.googleusercontent.com";
     const DISCOVERY_DOCS = [
       "https://sheets.googleapis.com/$discovery/rest?version=v4",
       "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"
