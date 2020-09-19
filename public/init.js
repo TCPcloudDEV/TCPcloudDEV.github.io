@@ -10,8 +10,8 @@
   const snackbarContainer = byID("toast-container");
 
     const cSHEET_NAME = "ECS_Sales (Responses)";
-    const cACCOUNT_RANGE = "Data!A2:A50";
-    const cCATEGORY_RANGE = "cfg!E5:E18";
+    const cACCOUNT_RANGE = "cfg!A2:A50";
+    const cCATEGORY_RANGE = "cfg!A5:A18";
 
 
   utils.hideLoader = utils.hideLoader.bind(null, forms, formLoader);
