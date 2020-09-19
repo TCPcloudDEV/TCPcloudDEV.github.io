@@ -38,8 +38,6 @@
   *  listeners.
   */
   function initClient() {
-     alert ("initClient");
-
     const CLIENT_ID =
       "405463250476-g6vgneqp01ht2pmv0mkqjr7qfds6k30l.apps.googleusercontent.com";
     const API_KEY = "AIzaSyB9lsuRV2xUnKU4mXwho34IZlZVxwu5qwQ";
@@ -53,6 +51,9 @@
       "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly";
 
     gapi.client.setApiKey(API_KEY);
+    
+    alert ("initClient 2");
+    
     gapi.client
       .init({
         discoveryDocs: DISCOVERY_DOCS,
