@@ -7,7 +7,7 @@
   const descriptionEl = byID("expense-description");
   const dateEl = byID("expense-date");
   const accountEl = byID("expense-account");
-  const categoryEl = byID("expense-category");
+    const categoryEl = byID("job-status");
   const amountEl = byID("expense-amount");
   const isIncomeEl = byID("is-income");
   const addExpenseBtn = byID("add-job");
@@ -86,7 +86,9 @@
 
     // initialize accounts and categories dropdown
     accountEl.innerHTML = accounts.sort().map(utils.wrapInOption).join();
-    categoryEl.innerHTML = categories.sort().map(utils.wrapInOption).join();
+      categoryEl.innerHTML = categories.sort().map(utils.wrapInOption).join();
+
+      alert(categoryEl);
 
     // set lister for `Save` button
     addExpenseBtn.onclick = addExpense.bind(null);

@@ -100,7 +100,7 @@
       .then(getCategoriesAndAccount, sheetNotFound)
       .then(initApp);
 
-    function sheetNotFound() {
+    function sheetNotFound() { // !!!!!!!
       snackbarContainer.MaterialSnackbar.showSnackbar({
         message: "Cannot find the sheet!",
         actionHandler: () => {
