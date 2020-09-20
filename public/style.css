@@ -12,11 +12,11 @@ body {
   width: 100vw;
 }
 
-#expense-form, #transfer-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 15px;
+#add-property-form, #transfer-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
 }
 
 #authorize-button {

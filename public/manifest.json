@@ -1,7 +1,7 @@
 {
-  "short_name": "Expense Manager",
-  "name": "Expense Manager",
-  "description": "Track your spendings using expense manager",
+  "short_name": "ECS Sales rep form",
+  "name": "ECS Sales rep form",
+  "description": "",
   "icons": [
     {
       "src": "icons/android-icon-1x.png",

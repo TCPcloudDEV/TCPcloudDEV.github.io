@@ -3,7 +3,7 @@
 
   // Cached DOM bindings
   const byID = document.getElementById.bind(document);
-  const expenseForm = byID("expense-form");
+    const expenseForm = byID("add-property-form");
   const descriptionEl = byID("expense-description");
   const dateEl = byID("expense-date");
   const accountEl = byID("expense-account");
