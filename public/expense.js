@@ -10,7 +10,7 @@
   const categoryEl = byID("expense-category");
   const amountEl = byID("expense-amount");
   const isIncomeEl = byID("is-income");
-  const addExpenseBtn = byID("add-expesne");
+  const addExpenseBtn = byID("add-job");
   const snackbarContainer = byID("toast-container");
 
   /**
