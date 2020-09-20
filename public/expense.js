@@ -82,7 +82,7 @@
 
   function init(sheetID, accounts, categories) {
     // set date picker's defalt value as today
-    dateEl.value = new Date().toISOString().substr(0, 10);
+    // !!!!! dateEl.value = new Date().toISOString().substr(0, 10);
 
     // initialize accounts and categories dropdown
     accountEl.innerHTML = accounts.sort().map(utils.wrapInOption).join();
