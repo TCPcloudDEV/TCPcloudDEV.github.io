@@ -25,10 +25,6 @@ body {
   font-size: 1.5em;
 }
 
-#toast-container {
-    margin-bottom: 100px;
-}
-
 .footer {
     padding: 10px;
     background: #424242;
