@@ -29,8 +29,6 @@
         var now = new Date();
         var ts = (now.getMonth() + 1) + "/" + now.getDate() + "/" + now.getFullYear() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 
-        alert(ts);
-
         gapi.client.sheets.spreadsheets.values
             .append(
                 utils.appendRequestObj([
