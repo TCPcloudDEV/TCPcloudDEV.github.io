@@ -29,6 +29,8 @@
         var now = new Date();
         var ts = (now.getMonth() + 1) + "/" + now.getDate() + "/" + now.getFullYear() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 
+        alert(ts);
+
         gapi.client.sheets.spreadsheets.values
             .append(
                 utils.appendRequestObj([
@@ -97,6 +99,9 @@
         // initialize dropdowns
         oJobSplitType.innerHTML = jobSplitTypes.map(utils.wrapInOption).join();
         oClaimStatus.innerHTML = jobClaimStatuses.map(utils.wrapInOption).join();
+
+        oJobSplitType.value = "";
+        oClaimStatus.value = "";
 
         // set lister for `Save` button
         oAddJobBttn.onclick = addJob.bind(null);
