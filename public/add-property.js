@@ -23,7 +23,8 @@
     function addJob(event) {
         if (!oCustLastName.checkValidity()) return false;
 
-        alert(oCustLastName.checkValidity());
+        alert(oCustLastName.id);
+        alert(oCustLastName.checkValidity().toString());
 
         event.preventDefault();
         utils.showLoader();
@@ -35,7 +36,7 @@
                 utils.appendRequestObj([
                     [
                         //`=DATE(${now.getFullYear()}, ${now.getMonth() + 1}, ${now.getDate()}, ${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()}, $)`,
-                        now.toString("MM/DD/YYYY hh:mm:ss"),
+                        now.toString(),
                         oCustLastName.value,
                         oCustFirstName.value,
                         oCustAddr.value,
