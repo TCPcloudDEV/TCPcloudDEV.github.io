@@ -88,8 +88,6 @@
     //accountEl.innerHTML = accounts.sort().map(utils.wrapInOption).join();
       categoryEl.innerHTML = categories.sort().map(utils.wrapInOption).join();
 
-      alert(categoryEl);
-
     // set lister for `Save` button
     addExpenseBtn.onclick = addExpense.bind(null);
   }
