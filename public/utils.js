@@ -46,7 +46,7 @@
 
       // The A1 notation of a range to search for a logical table of data.
       // Values will be appended after the last row of the table.
-        range: "Pipeline!A1",
+        range: "Pipeline!A2",
 
       includeValuesInResponse: true,
 
@@ -55,7 +55,7 @@
       responseValueRenderOption: "FORMATTED_VALUE",
 
       // How the input data should be interpreted.
-      valueInputOption: "RAW", // || USER_ENTERED
+      valueInputOption: "USER_ENTERED", // USER_ENTERED || RAW
 
       // How the input data should be inserted.
       insertDataOption: "INSERT_ROWS",
