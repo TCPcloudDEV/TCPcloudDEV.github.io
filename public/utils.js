@@ -1,34 +1,35 @@
 (function() {
-  /**
-   * @param {DOMElement} el
-   */
-  function hideEl(el) {
-    el.style.display = "none";
-  }
+    function hideElm(oElm) {
+        oElm.style.display = "none";
+    }
 
-  /**
-   * @param  {DOMElement} el
-   * @param  {String} displayStyle - (optional) flex, inline
-   */
-  function showEl(el, displayStyle) {
-    el.style.display = displayStyle ? displayStyle : "block";
-  }
 
-  /**
-   * show loader, hide forms
-   */
-  function showLoader(forms, loader) {
-    hideEl(forms);
-    showEl(loader);
-  }
+    /**
+    * @param  {DOMElement} oElm
+    * @param  {String} displayStyle - (optional) flex, inline
+    */
+    function showElm(oElm, displayStyle) {
+        oElm.style.display = displayStyle ? displayStyle : "block";
+    }
 
-  /**
-   * hide loader, show forms
-   */
-  function hideLoader(forms, loader) {
-    hideEl(loader);
-    showEl(forms);
-  }
+
+    /**
+    * show loader, hide forms
+    */
+    function showLoader(oForms, oFormLoader) {
+        hideElm(oForms);
+        showElm(oFormLoader);
+    }
+
+
+    /**
+    * hide loader, show forms
+    */
+    function hideLoader(oForms, oFormLoader) {
+        hideElm(oFormLoader);
+        showElm(oForms);
+    }
+
 
   /**
   * Generate append request object - for given sheet and values to append
@@ -45,7 +46,7 @@
 
       // The A1 notation of a range to search for a logical table of data.
       // Values will be appended after the last row of the table.
-      range: "Expenses!A1",
+        range: "Pipeline!A1",
 
       includeValuesInResponse: true,
 
@@ -63,7 +64,8 @@
         values
       }
     };
-  }
+    }
+
 
   /**
   * Generate batchGet request object - for given sheet, and range.
@@ -89,8 +91,8 @@
 
     window.ECSSales = window.ECSSales || {};
     window.ECSSales.utils = window.ECSSales.utils || {
-        showEl,
-        hideEl,
+        showElm,
+        hideElm,
         hideLoader,
         showLoader,
         wrapInOption,
