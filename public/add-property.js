@@ -34,7 +34,7 @@
             .append(
                 utils.appendRequestObj([
                     [
-                        now.getDate() +" "+ now.getHours() +":"+ now.getMinutes() +":"+ now.getSeconds(),
+                        now.getMonth() + 1 + "/" + now.getDate() + "/" + now.getFullYear() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds(),
                         oCustLastName.value,
                         oCustFirstName.value,
                         oCustAddr.value,
