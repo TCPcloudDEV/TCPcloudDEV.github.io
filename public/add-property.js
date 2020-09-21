@@ -21,7 +21,7 @@
 
 
     function addJob(event) {
-        if (!oAddPropertyForm.checkValidity()) return false;
+        if (!oCustLastName.checkValidity()) return false;
 
         event.preventDefault();
         utils.showLoader();
@@ -33,7 +33,7 @@
                 utils.appendRequestObj([
                     [
                         //`=DATE(${now.getFullYear()}, ${now.getMonth() + 1}, ${now.getDate()}, ${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()}, $)`,
-                        now,
+                        now.toString("MM/DD/YYYY hh:mm:ss",
                         oCustLastName.value,
                         oCustFirstName.value,
                         oCustAddr.value,

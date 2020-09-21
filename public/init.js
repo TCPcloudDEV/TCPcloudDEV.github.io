@@ -9,7 +9,7 @@
     const oFormLoader = getElmById("form-loader");
     const oSnackbar = getElmById("toast-container");
 
-    const cSHEET_NAME = "ECS_Sales (Responses)_WIPttt"; // !!!!!!!!!!!!
+    const cSHEET_NAME = "ECS_Sales (Responses)_WIP";
     const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
     const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
 
@@ -108,7 +108,7 @@
 
         function sheetNotFound() {
             oSnackbar.MaterialSnackbar.showSnackbar({
-            message: "Cannot find the sheet!\n\n\n",
+            message: "Cannot find the sheet!",
             actionHandler: () => {
                 window.open(
                 "https://www.estateclaimservices.com/contact.html",
