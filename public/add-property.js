@@ -33,7 +33,7 @@
                 utils.appendRequestObj([
                     [
                         //`=DATE(${now.getFullYear()}, ${now.getMonth() + 1}, ${now.getDate()}, ${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()}, $)`,
-                        now.toString("MM/DD/YYYY hh:mm:ss",
+                        now.toString("MM/DD/YYYY hh:mm:ss"),
                         oCustLastName.value,
                         oCustFirstName.value,
                         oCustAddr.value,
@@ -44,7 +44,7 @@
                         oJobSplitType.value,
                         oJobScope.value,
                         oJobNotes.value,
-                        oClaimStatus.value,
+                        oClaimStatus.value
                     ]
                 ])
             )
