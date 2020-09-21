@@ -50,7 +50,7 @@
             .then(
                 response => {
                     // reset fileds
-                    custLastName.value = "";
+                    oCustLastName.value = "";
                     oCustFirstName.value = "";
                     oCustAddr.value = "";
                     oCustCity.value = "";
