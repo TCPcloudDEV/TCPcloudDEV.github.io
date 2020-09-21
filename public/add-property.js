@@ -17,7 +17,7 @@
     const oClaimStatus = getElmById("job-claim-status");
 
     const oAddJobBttn = getElmById("add-job-bttn");
-    const snackbarContainer = getElmById("toast-container");
+    const oSnackbar = getElmById("toast-container");
 
 
     function addJob(event) {
@@ -63,7 +63,7 @@
                     oJobNotes.value = "";
                     oClaimStatus.value = "";
 
-                    snackbarContainer.MaterialSnackbar.showSnackbar({
+                    oSnackbar.MaterialSnackbar.showSnackbar({
                         message: "Property added!"
                     });
                     utils.hideLoader();
@@ -77,7 +77,7 @@
                     }
 
                     console.log(response);
-                    snackbarContainer.MaterialSnackbar.showSnackbar({
+                    oSnackbar.MaterialSnackbar.showSnackbar({
                         message,
                         actionHandler: () => {
                             window.open(
