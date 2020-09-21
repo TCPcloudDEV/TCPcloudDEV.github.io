@@ -1,5 +1,5 @@
 (function() {
-  const utils = window.expenseManager.utils;
+    const utils = window.ECSSales.utils;
 
   // Cached DOM bindings
   const byID = document.getElementById.bind(document);
@@ -153,12 +153,12 @@ function getSheetID(sheetName) {
   function initApp(data) {
     utils.hideLoader();
 
-    window.expenseManager.expenseForm.init(
+      window.ECSSales.AddPropertyForm.init(
         data.sheetID,
         data.jobSplitTypes,
         data.jobClaimStatuses
     );
-    window.expenseManager.transferForm.init(data.sheetID, data.jobSplitTypes);
+      window.ECSSales.transferForm.init(data.sheetID, data.jobSplitTypes);
 
     utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
   }

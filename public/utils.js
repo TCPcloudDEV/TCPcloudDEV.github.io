@@ -87,14 +87,14 @@
     return `<option value='${option}'>${option}</option>`;
   }
 
-  window.expenseManager = window.expenseManager || {};
-  window.expenseManager.utils = window.expenseManager.utils || {
-    showEl,
-    hideEl,
-    hideLoader,
-    showLoader,
-    wrapInOption,
-    batchGetRequestObj,
-    appendRequestObj
-  };
+    window.ECSSales = window.ECSSales || {};
+    window.ECSSales.utils = window.ECSSales.utils || {
+        showEl,
+        hideEl,
+        hideLoader,
+        showLoader,
+        wrapInOption,
+        batchGetRequestObj,
+        appendRequestObj
+    };
 })();
