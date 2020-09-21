@@ -35,7 +35,7 @@
             .append(
                 utils.appendRequestObj([
                     [
-                        ts.toString(),
+                        `=DATE(${now.yyyy}, ${dateObj.mm}, ${dateObj.dd}) + TIME(${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()})`,
                         oCustLastName.value,
                         oCustFirstName.value,
                         oCustAddr.value,

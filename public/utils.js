@@ -50,12 +50,12 @@
 
       includeValuesInResponse: true,
 
-      responseDateTimeRenderOption: "UNFORMATTED_VALUE",
+      responseDateTimeRenderOption: "FORMATTED_STRING",
 
       responseValueRenderOption: "FORMATTED_VALUE",
 
       // How the input data should be interpreted.
-      valueInputOption: "USER_ENTERED", // USER_ENTERED || RAW
+      valueInputOption: "USER_ENTERED",
 
       // How the input data should be inserted.
       insertDataOption: "INSERT_ROWS",
