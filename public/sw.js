@@ -1,4 +1,4 @@
-var CACHE_NAME = "expense-manager-cache";
+var CACHE_NAME = "ecs-sales-cache";
 var urlsToCache = [
   "style.css",
   "icons/favicon-32x32.png",
@@ -6,7 +6,7 @@ var urlsToCache = [
   "init.js",
   "transfer.js",
   "utils.js",
-  "expense.js",
+  "add-property.js",
   "vendor/mdl/material.min.js",
   "vendor/mdl/material.min.css"
 ];

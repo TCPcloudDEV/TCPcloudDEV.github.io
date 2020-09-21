@@ -35,7 +35,7 @@
   * Generate append request object - for given sheet and values to append
   * Docs: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append
   *
-  * @param {String} spreadsheetId Expense sheet ID
+  * @param {String} spreadsheetId sheet ID
   * @param {Array} values values to be appended
   * @returns {Object} request object for append
   */
@@ -71,7 +71,7 @@
   * Generate batchGet request object - for given sheet, and range.
   * Docs: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/batchGet
   *
-  * @param {String} sheetID Expense sheet ID
+  * @param {String} sheetID sheet ID
   * @param {Array} ranges List of ranges in A1 notation
   * @returns {Object} request object for batchGet
   */

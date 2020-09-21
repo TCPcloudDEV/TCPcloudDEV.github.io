@@ -9,7 +9,7 @@
     const oFormLoader = getElmById("form-loader");
     const snackbarContainer = getElmById("toast-container"); // !!!!!!!
 
-    const cSHEET_NAME = "ECS_Sales (Responses)_WIP";
+    const cSHEET_NAME = "ECS_Sales (Responses)_WIPttt"; // !!!!!!!!!!!!
     const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
     const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
 
@@ -55,7 +55,7 @@
             "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"
         ];
 
-        // Write access for spreadsheet to add expenses, readonly access for drive to find sheet ID
+        // Write access for spreadsheet, readonly access for drive to find sheet ID
         const SCOPES =
             "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly";
 
@@ -81,7 +81,7 @@
 
     /**
     *  Called when the signed in status changes, to update the UI
-    *  appropriately. After a sign-in, find expense sheet id.
+    *  appropriately. After a sign-in, find sheet id.
     */
     function updateSigninStatus(isSignedIn) {
         if (isSignedIn) {
@@ -106,12 +106,12 @@
             .then(getJobStatusAndMore, sheetNotFound)
             .then(initApp);
 
-        function sheetNotFound() { // !!!!!!!
+        function sheetNotFound() {
             snackbarContainer.MaterialSnackbar.showSnackbar({
             message: "Cannot find the sheet!",
             actionHandler: () => {
                 window.open(
-                "https://github.com/mitul45/expense-manager/blob/master/README.md#how-to-get-started",
+                "https://www.estateclaimservices.com/contact.html",
                 "_blank"
                 );
             },

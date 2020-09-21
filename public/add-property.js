@@ -14,7 +14,7 @@
     const oJobSplitType = getElmById("job-split-type");
     const oJobScope = getElmById("job-scope");
     const oJobNotes = getElmById("job-notes");
-    const oClaimStatusElm = getElmById("job-claim-status");
+    const oClaimStatus = getElmById("job-claim-status");
 
     const oAddJobBttn = getElmById("add-job-bttn");
     const snackbarContainer = getElmById("toast-container");
@@ -32,7 +32,8 @@
             .append(
                 utils.appendRequestObj([
                     [
-                        `=DATE(${now.getFullYear()}, ${now.getMonth() + 1}, ${now.getDate()}, ${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()},, $)`,
+                        //`=DATE(${now.getFullYear()}, ${now.getMonth() + 1}, ${now.getDate()}, ${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()}, $)`,
+                        now,
                         oCustLastName.value,
                         oCustFirstName.value,
                         oCustAddr.value,
@@ -43,7 +44,7 @@
                         oJobSplitType.value,
                         oJobScope.value,
                         oJobNotes.value,
-                        oClaimStatusElm.value,
+                        oClaimStatus.value,
                     ]
                 ])
             )
@@ -60,7 +61,7 @@
                     oJobSplitType.value = "";
                     oJobScope.value = "";
                     oJobNotes.value = "";
-                    oClaimStatusElm.value.value = "";
+                    oClaimStatus.value = "";
 
                     snackbarContainer.MaterialSnackbar.showSnackbar({
                         message: "Property added!"
@@ -80,7 +81,7 @@
                         message,
                         actionHandler: () => {
                             window.open(
-                                "https://github.com/mitul45/expense-manager/blob/master/README.md#how-to-get-started", // !!!!!!!!!!!!!
+                                "https://www.estateclaimservices.com/contact.html",
                                 "_blank"
                             );
                         },
@@ -95,7 +96,7 @@
     function init(sheetID, jobSplitTypes, jobClaimStatuses) {
         // initialize dropdowns
         oJobSplitType.innerHTML = jobSplitTypes.map(utils.wrapInOption).join();
-        oClaimStatusElm.innerHTML = jobClaimStatuses.map(utils.wrapInOption).join();
+        oClaimStatus.innerHTML = jobClaimStatuses.map(utils.wrapInOption).join();
 
         // set lister for `Save` button
         oAddJobBttn.onclick = addJob.bind(null);
