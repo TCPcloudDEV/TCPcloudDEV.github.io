@@ -24,7 +24,6 @@ self.addEventListener("install", function(event) {
 
 // listen for fetch events
 self.addEventListener("fetch", function (event) {
-    alert("fetch !!!!");
   const requestURL = new URL(event.request.url);
   event.respondWith(
     caches.open(CACHE_NAME).then(function(cache) {
