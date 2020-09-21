@@ -108,7 +108,7 @@
 
         function sheetNotFound() {
             oSnackbar.MaterialSnackbar.showSnackbar({
-            message: "Cannot find the sheet!\n",
+            message: "Cannot find the sheet!\n\n\n",
             actionHandler: () => {
                 window.open(
                 "https://www.estateclaimservices.com/contact.html",
