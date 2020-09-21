@@ -150,13 +150,18 @@ function getStream() {
 
 function takePhoto() {
     if (!('ImageCapture' in window)) {
-        alert('ImageCapture is not available');
+        alert("ImageCapture is not available");
         return;
     }
 
     if (!theStream) {
-        alert('Grab the video stream first!');
-        return;
+        getStream();
+
+        if (!theStream) {
+            alert("Failed to get video stream");
+
+            return;
+        }
     }
 
     var theImageCapturer = new ImageCapture(theStream.getVideoTracks()[0]);
