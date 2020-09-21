@@ -3,7 +3,7 @@
 
     // Cached DOM bindings
     const getElmById = document.getElementById.bind(document);
-    const oAddPropertyForm = getElmById("add-property-form");
+    const AddPropertyForm = getElmById("add-property-form");
     const oCustLastName = getElmById("cust-last-name");
     const oCustFirstName = getElmById("cust-first-name");
     const oCustAddr = getElmById("cust-addr");
@@ -21,7 +21,7 @@
 
 
     function addJob(event) {
-        if (!oAddPropertyForm.checkValidity()) return false;
+        if (!oCustLastName.checkValidity()) return false;
 
         event.preventDefault();
         utils.showLoader();
