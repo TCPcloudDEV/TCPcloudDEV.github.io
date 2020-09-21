@@ -35,8 +35,8 @@
             .append(
                 utils.appendRequestObj([
                     [
-                        //`=DATE(${now.getFullYear()}, ${now.getMonth() + 1}, ${now.getDate()}, ${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()}, $)`,
-                        now.toString(),
+                        `=DATE(${now.getFullYear()}, ${now.getMonth() + 1}, ${now.getDate()}, ${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()}, 0, $)`,
+                        //now.toString(),
                         oCustLastName.value,
                         oCustFirstName.value,
                         oCustAddr.value,
