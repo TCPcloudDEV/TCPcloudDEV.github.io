@@ -55,7 +55,7 @@
       responseValueRenderOption: "FORMATTED_VALUE",
 
       // How the input data should be interpreted.
-      valueInputOption: "USER_ENTERED",
+      valueInputOption: "RAW", // || USER_ENTERED
 
       // How the input data should be inserted.
       insertDataOption: "INSERT_ROWS",
