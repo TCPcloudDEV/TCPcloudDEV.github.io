@@ -27,13 +27,12 @@
         utils.showLoader();
 
         var now = new Date();
-        var ts = (now.getMonth() + 1) + "/" + now.getDate() + "/" + now.getFullYear() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 
         gapi.client.sheets.spreadsheets.values
             .append(
                 utils.appendRequestObj([
                     [
-                        `=DATE(${now.yyyy}, ${now.mm}, ${now.dd}) + TIME(${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()})`,
+                        `=DATE(${now.getFullYear()}, ${now.getMonth() + 1}, ${now.getDate()}) + TIME(${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()})`,
                         oCustLastName.value,
                         oCustFirstName.value,
                         oCustAddr.value,
