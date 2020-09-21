@@ -50,7 +50,7 @@
 
       includeValuesInResponse: true,
 
-      responseDateTimeRenderOption: "FORMATTED_STRING",
+      responseDateTimeRenderOption: "UNFORMATTED_VALUE",
 
       responseValueRenderOption: "FORMATTED_VALUE",
 
