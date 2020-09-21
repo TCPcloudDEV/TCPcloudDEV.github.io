@@ -21,7 +21,9 @@
 
 
     function addJob(event) {
-        if (!AddPropertyForm.checkValidity()) return false;
+        if (!oCustLastName.checkValidity()) return false;
+
+        alert(oCustLastName.checkValidity());
 
         event.preventDefault();
         utils.showLoader();
