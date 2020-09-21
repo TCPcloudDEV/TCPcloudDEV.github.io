@@ -9,7 +9,7 @@
     const oCustAddr = getElmById("cust-addr");
     const oCustCity = getElmById("cust-city");
     const oCustPhone = getElmById("cust-phone");
-    const oCustEmail = getElmById("ccust-email");
+    const oCustEmail = getElmById("cust-email");
     const oCustClaimNum = getElmById("job-claim-num");
     const oJobSplitType = getElmById("job-split-type");
     const oJobScope = getElmById("job-scope");
