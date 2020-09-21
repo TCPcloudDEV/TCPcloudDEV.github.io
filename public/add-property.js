@@ -21,20 +21,19 @@
 
 
     function addJob(event) {
-        if (!oCustLastName.checkValidity()) return false;
-
-        alert(oCustLastName.checkValidity().toString());
+        if (!AddPropertyForm.checkValidity()) return false;
 
         event.preventDefault();
         utils.showLoader();
 
         var now = new Date();
+        var ts = (now.getMonth() + 1) + "/" + now.getDate() + "/" + now.getFullYear() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 
         gapi.client.sheets.spreadsheets.values
             .append(
                 utils.appendRequestObj([
                     [
-                        (now.getMonth()+1) +"/"+ now.getDate() +"/"+ now.getFullYear() +" "+ now.getHours() +":"+ now.getMinutes() +":"+ now.getSeconds(),
+                        ts,
                         oCustLastName.value,
                         oCustFirstName.value,
                         oCustAddr.value,
