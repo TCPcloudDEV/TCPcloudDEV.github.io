@@ -106,7 +106,8 @@
 
 
     window.ECSSales.AddPropertyForm = {
-        init
+        init,
+        addJob
     };
 
 
