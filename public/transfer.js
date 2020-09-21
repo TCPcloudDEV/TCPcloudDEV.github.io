@@ -1,5 +1,5 @@
 (function() {
-  const utils = window.expenseManager.utils;
+    const utils = window.ECSSales.utils;
 
   // Cached DOM bindings
   const byID = document.getElementById.bind(document);
