@@ -23,6 +23,8 @@
     function addJob(event) {
         if (!AddPropertyForm.checkValidity()) return false;
 
+        alert("addJob: " + event); // !!!!!!!!!!!!!!
+
         event.preventDefault();
         utils.showLoader();
 
@@ -107,7 +109,6 @@
 
     window.ECSSales.AddPropertyForm = {
         init,
-        addJob
     };
 })();
 

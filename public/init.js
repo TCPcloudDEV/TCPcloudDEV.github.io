@@ -161,11 +161,13 @@
     function initApp(data) {
         utils.hideLoader();
 
-            window.ECSSales.AddPropertyForm.init(
+        window.ECSSales.AddPropertyForm.init(
             data.sheetID,
             data.jobSplitTypes,
             data.jobClaimStatuses
         );
+
+        window.ECSSales.AddPropertyForm.add-job-bttn.onclick = window.ECSSales.AddPropertyForm.addJob();
 
         //window.ECSSales.transferForm.init(data.sheetID, data.jobSplitTypes);
 
