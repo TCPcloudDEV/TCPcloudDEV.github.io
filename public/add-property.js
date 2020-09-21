@@ -150,7 +150,8 @@ function getStream() {
 
 function takePhoto() {
     if (!('ImageCapture' in window)) {
-        alert("ImageCapture is not available");
+        alert("ImageCapture is not available.");
+
         return;
     }
 
@@ -158,7 +159,7 @@ function takePhoto() {
         getStream();
 
         if (!theStream) {
-            alert("Failed to get video stream");
+            alert("Failed to get video stream.");
 
             return;
         }
