@@ -35,7 +35,7 @@
             .append(
                 utils.appendRequestObj([
                     [
-                        ts,
+                        ts.toString(),
                         oCustLastName.value,
                         oCustFirstName.value,
                         oCustAddr.value,
