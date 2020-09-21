@@ -78,13 +78,13 @@ function addExpense(event) {
       );
   }
 
-function init(sheetID, jobSplitTypes, jobClaimStatus) {
+function init(sheetID, jobSplitTypes, jobClaimStatuses) {
     // set date picker's defalt value as today
     // !!!!! dateEl.value = new Date().toISOString().substr(0, 10);
 
     // initialize dropdowns
-    oJobSplitType.innerHTML = jobSplitTypes.sort().map(utils.wrapInOption).join();
-    oClaimStatusElm.innerHTML = jobClaimStatus.sort().map(utils.wrapInOption).join();
+    oJobSplitType.innerHTML = jobSplitTypes.map(utils.wrapInOption).join();
+    oClaimStatusElm.innerHTML = jobClaimStatuses.map(utils.wrapInOption).join();
 
     // set lister for `Save` button
     addExpenseBtn.onclick = addExpense.bind(null);

@@ -10,8 +10,8 @@
   const snackbarContainer = byID("toast-container");
 
     const cSHEET_NAME = "ECS_Sales (Responses)_WIP";
-    const cJOB_SPLIT_TYPE = "cfg!C5:C";
-    const cJOB_CLAIM_STATUS = "cfg!A5:A";
+    const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
+    const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
 
 
   utils.hideLoader = utils.hideLoader.bind(null, forms, formLoader);
@@ -115,13 +115,14 @@ function onSignin() {
     }
   }
 
-  /**
-  * Get sheet ID for a given sheet name
-  *
-  * @param {String} sheetName Sheet name to search in user's drive
-  * @returns {Promise} a promise resolves successfully with sheetID if it's available in user's drive
-  */
-  function getSheetID(sheetName) {
+
+/**
+* Get sheet ID for a given sheet name
+*
+* @param {String} sheetName Sheet name to search in user's drive
+* @returns {Promise} a promise resolves successfully with sheetID if it's available in user's drive
+*/
+function getSheetID(sheetName) {
     return new Promise((resolve, reject) => {
       gapi.client.drive.files
         .list({
@@ -133,18 +134,18 @@ function onSignin() {
           else resolve(response.result.files[0].id);
         });
     });
-  }
+}
 
  function getJobStatusAndMore(sheetID) {
     return new Promise((resolve, reject) => {
         gapi.client.sheets.spreadsheets.values
         .batchGet(
-            utils.batchGetRequestObj(sheetID, [cJOB_SPLIT_TYPE, cJOB_CLAIM_STATUS])
+            utils.batchGetRequestObj(sheetID, [cJOB_SPLIT_TYPE_RANGE, cJOB_CLAIM_STATUS_RANGE])
         )
         .then(response => {
             const jobSplitTypes = response.result.valueRanges[0].values[0];
-            const jobClaimStatus = response.result.valueRanges[1].values[0];
-            resolve({ sheetID, jobSplitTypes, jobClaimStatus });
+            const jobClaimStatuses = response.result.valueRanges[1].values[0];
+            resolve({ sheetID, jobSplitTypes, jobClaimStatuses });
         });
     });
 }
@@ -155,7 +156,7 @@ function onSignin() {
     window.expenseManager.expenseForm.init(
         data.sheetID,
         data.jobSplitTypes,
-        data.jobClaimStatus
+        data.jobClaimStatuses
     );
     window.expenseManager.transferForm.init(data.sheetID, data.jobSplitTypes);
 
