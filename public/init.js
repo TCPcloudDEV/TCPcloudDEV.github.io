@@ -9,9 +9,9 @@
   const formLoader = byID("form-loader");
   const snackbarContainer = byID("toast-container");
 
-    const cSHEET_NAME = "ECS_Sales (Responses)";
-    const cACCOUNT_RANGE = "cfg!A2:A50";
-    const cCATEGORY_RANGE = "cfg!A5:A18";
+    const cSHEET_NAME = "ECS_Sales (Responses)_WIP";
+    const cJOB_SPLIT_TYPE = "cfg!C5:C";
+    const cJOB_CLAIM_STATUS = "cfg!A5:A";
 
 
   utils.hideLoader = utils.hideLoader.bind(null, forms, formLoader);
@@ -92,12 +92,12 @@
   /**
   * On successful signin - Update authorization buttons, make a call to get sheetID
   */
-  function onSignin() {
+function onSignin() {
     utils.hideEl(authorizeButton);
     utils.showEl(signoutButton);
 
     getSheetID(cSHEET_NAME)
-      .then(getCategoriesAndAccount, sheetNotFound)
+        .then(getJobStatusAndMore, sheetNotFound)
       .then(initApp);
 
     function sheetNotFound() { // !!!!!!!
@@ -135,35 +135,29 @@
     });
   }
 
-  /**
-    * Fetch all accounts, and categories info from spreadsheet
-    *
-    * @param {String} sheetID Expense sheetID
-    */
-  function getCategoriesAndAccount(sheetID) {
+ function getJobStatusAndMore(sheetID) {
     return new Promise((resolve, reject) => {
-
-      gapi.client.sheets.spreadsheets.values
+        gapi.client.sheets.spreadsheets.values
         .batchGet(
-          utils.batchGetRequestObj(sheetID, [cACCOUNT_RANGE, cCATEGORY_RANGE])
+            utils.batchGetRequestObj(sheetID, [cJOB_SPLIT_TYPE, cJOB_CLAIM_STATUS])
         )
         .then(response => {
-          const accounts = response.result.valueRanges[0].values[0];
-          const categories = response.result.valueRanges[1].values[0];
-          resolve({ sheetID, accounts, categories });
+            const jobSplitTypes = response.result.valueRanges[0].values[0];
+            const jobClaimStatus = response.result.valueRanges[1].values[0];
+            resolve({ sheetID, jobSplitTypes, jobClaimStatus });
         });
     });
-  }
+}
 
   function initApp(data) {
     utils.hideLoader();
 
     window.expenseManager.expenseForm.init(
-      data.sheetID,
-      data.accounts,
-      data.categories
+        data.sheetID,
+        data.jobSplitTypes,
+        data.jobClaimStatus
     );
-    window.expenseManager.transferForm.init(data.sheetID, data.accounts);
+    window.expenseManager.transferForm.init(data.sheetID, data.jobSplitTypes);
 
     utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
   }

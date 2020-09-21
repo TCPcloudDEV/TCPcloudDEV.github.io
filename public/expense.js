@@ -6,17 +6,15 @@
     const expenseForm = byID("add-property-form");
   const descriptionEl = byID("expense-description");
   const dateEl = byID("expense-date");
-  const accountEl = byID("expense-account");
-    const categoryEl = byID("job-status");
+    const oJobSplitType = byID("job-split-type");
+    const oClaimStatusElm = byID("job-claim-status");
   const amountEl = byID("expense-amount");
   const isIncomeEl = byID("is-income");
   const addExpenseBtn = byID("add-job");
   const snackbarContainer = byID("toast-container");
 
-  /**
-  * Append expense to the expense sheet
-  */
-  function addExpense(event) {
+
+function addExpense(event) {
     if (!expenseForm.checkValidity()) return false;
 
     event.preventDefault();
@@ -24,8 +22,8 @@
 
     const expenseDate = dateEl.value;
     const descriptionVal = descriptionEl.value;
-    const accountVal = accountEl.value;
-    const categoryVal = categoryEl.value;
+    const splitType = oJobSplitType.value;
+    const claimStatus = oClaimStatusElm.value;
     const amountVal = amountEl.value;
     const isIncome = isIncomeEl.checked;
 
@@ -40,8 +38,8 @@
           [
             `=DATE(${dateObj.yyyy}, ${dateObj.mm}, ${dateObj.dd})`,
             descriptionVal,
-            accountVal,
-            categoryVal,
+            splitType,
+            claimStatus,
             isIncome ? 0 : amountVal, // income amount
             isIncome ? amountVal : 0, // expense amount
             false // is internal transfer?
@@ -80,13 +78,13 @@
       );
   }
 
-  function init(sheetID, accounts, categories) {
+function init(sheetID, jobSplitTypes, jobClaimStatus) {
     // set date picker's defalt value as today
     // !!!!! dateEl.value = new Date().toISOString().substr(0, 10);
 
-    // initialize accounts and categories dropdown
-    //accountEl.innerHTML = accounts.sort().map(utils.wrapInOption).join();
-      categoryEl.innerHTML = categories.sort().map(utils.wrapInOption).join();
+    // initialize dropdowns
+    oJobSplitType.innerHTML = jobSplitTypes.sort().map(utils.wrapInOption).join();
+    oClaimStatusElm.innerHTML = jobClaimStatus.sort().map(utils.wrapInOption).join();
 
     // set lister for `Save` button
     addExpenseBtn.onclick = addExpense.bind(null);
