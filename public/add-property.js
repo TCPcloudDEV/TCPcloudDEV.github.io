@@ -83,7 +83,7 @@ function addJob() {
                 oSnackbar.MaterialSnackbar.showSnackbar({
                     message: "Property added."
                 });
-                //utils.hideLoader();
+                utils.hideLoader();
             },
             response => {
                 utils.hideLoader();
@@ -103,7 +103,8 @@ function addJob() {
                         );
                     },
                     actionText: "Details",
-                    timeout: 5 * 60 * 1000
+                    //timeout: 5 * 60 * 1000
+                    timeout: 30 * 1000
                 });
             }
         );

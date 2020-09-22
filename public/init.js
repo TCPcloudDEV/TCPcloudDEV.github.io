@@ -7,7 +7,7 @@
     const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
     const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
 
-    getElmById("lblVer").innerHTML = "0.27";
+    getElmById("lblVer").innerHTML = "0.28";
 
 
     const oAuthBttn = getElmById("authorize-bttn");
@@ -108,15 +108,15 @@
 
         function sheetNotFound() {
             oSnackbar.MaterialSnackbar.showSnackbar({
-            message: "Cannot find the sheet!",
-            actionHandler: () => {
-                window.open(
-                "https://www.estateclaimservices.com/contact.html",
-                "_blank"
-                );
-            },
-            actionText: "Details",
-            timeout: 5 * 60 * 1000
+                message: "Cannot find the sheet!",
+                actionHandler: () => {
+                    window.open(
+                    "https://www.estateclaimservices.com/contact.html",
+                    "_blank"
+                    );
+                },
+                actionText: "Details",
+                timeout: 5 * 60 * 1000
             });
         }
     }
