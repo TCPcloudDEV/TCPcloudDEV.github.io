@@ -103,7 +103,7 @@
         oClaimStatus.value = "";
 
         // set lister for `Save` button
-        //oAddJobBttn.onclick = addJob.bind(null);
+        oAddJobBttn.onclick = addJob.bind(null);
     }
 
 
