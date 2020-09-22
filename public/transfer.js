@@ -1,7 +1,6 @@
 (function() {
     const utils = window.ECSSales.utils;
 
-  // Cached DOM bindings
   const byID = document.getElementById.bind(document);
   const transferFrom = byID("transfer-form");
   const descriptionEl = byID("transfer-description");

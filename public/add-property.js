@@ -1,6 +1,5 @@
 const utils = window.ECSSales.utils;
 
-// Cached DOM bindings
 const getElmById = document.getElementById.bind(document);
 const AddPropertyForm = getElmById("add-property-form");
 const oCustLastName = getElmById("cust-last-name");
@@ -84,7 +83,7 @@ function addJob() {
                 oSnackbar.MaterialSnackbar.showSnackbar({
                     message: "Property added."
                 });
-                utils.hideLoader();
+                //utils.hideLoader();
             },
             response => {
                 utils.hideLoader();
@@ -170,7 +169,6 @@ function takePhoto() {
             var imgCtrl = document.getElementById("imgCtrl");
             imgCtrl.src = URL.createObjectURL(blob);
         })
-        .catch(err => alert('Error: ' + err));
+        .catch(err => alert("Error: " + err));
 }
-
 
