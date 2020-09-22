@@ -59,7 +59,7 @@
         const SCOPES =
             "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly";
 
-        getElmById("divVer").innerHTML = "21.20:29";
+        getElmById("lblVer").value = "21.20:30";
 
         gapi.client.setApiKey(API_KEY);
         
