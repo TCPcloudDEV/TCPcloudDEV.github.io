@@ -7,7 +7,7 @@
     const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
     const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
 
-    getElmById("lblVer").innerHTML = "0.29";
+    getElmById("lblVer").innerHTML = "0.30";
 
 
     const oAuthBttn = getElmById("authorize-bttn");
@@ -116,8 +116,7 @@
                     );
                 },
                 actionText: "Details",
-                //timeout: 5 * 60 * 1000
-                timeout: 30 * 1000
+                timeout: 5 * 60 * 1000
             });
         }
     }
