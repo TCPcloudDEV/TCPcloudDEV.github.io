@@ -103,7 +103,7 @@
         oClaimStatus.value = "";
 
         // set lister for `Save` button
-        // !!!!!!!!!!!!!!!!!!! oAddJobBttn.onclick = addJob.bind(null);
+        oAddJobBttn.onclick = addJob.bind(null);
     }
 
 
@@ -119,6 +119,7 @@ function getUserMedia(options, successCallback, failureCallback) {
         return api.bind(navigator)(options, successCallback, failureCallback);
     }
 }
+
 
 var theStream;
 
@@ -157,13 +158,9 @@ function takePhoto() {
     }
 
     if (!theStream) {
-        getStream();
+        alert("Failed to get video stream.");
 
-        if (!theStream) {
-            alert("Failed to get video stream.");
-
-            return;
-        }
+        return;
     }
 
     var theImageCapturer = new ImageCapture(theStream.getVideoTracks()[0]);

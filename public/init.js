@@ -167,8 +167,6 @@
             data.jobClaimStatuses
         );
 
-        getElmById("add-job-bttn").onclick = window.ECSSales.AddPropertyForm.addJob();
-
         //window.ECSSales.transferForm.init(data.sheetID, data.jobSplitTypes);
 
         utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
