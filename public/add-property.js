@@ -44,9 +44,9 @@ const oSnackbar = getElmById("toast-container");
 function addJob(event) {
     if (!AddPropertyForm.checkValidity()) return false;
 
-    alert("addJob 2: " + event); // !!!!!!!!!!!!!!
+    alert("addJob 3: " + event); // !!!!!!!!!!!!!!
 
-    event.preventDefault();
+    //event.preventDefault();
     utils.showLoader();
 
     var now = new Date();
