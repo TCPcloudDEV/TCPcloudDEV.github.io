@@ -18,6 +18,8 @@ const oClaimStatus = getElmById("job-claim-status");
 const oAddJobBttn = getElmById("add-job-bttn");
 const oSnackbar = getElmById("toast-container");
 
+var oCamStrm;
+
 
 (function () {
     function init(sheetID, jobSplitTypes, jobClaimStatuses) {
@@ -30,8 +32,6 @@ const oSnackbar = getElmById("toast-container");
 
         // set lister for `Save` button
         //oAddJobBttn.onclick = addJob.bind(null);
-
-        divVer.value = "21.20:06";
     }
 
 
@@ -41,12 +41,9 @@ const oSnackbar = getElmById("toast-container");
 })();
 
 
-function addJob(event) {
+function addJob() {
     if (!AddPropertyForm.checkValidity()) return false;
 
-    alert("addJob 3: " + event); // !!!!!!!!!!!!!!
-
-    //event.preventDefault();
     utils.showLoader();
 
     var now = new Date();
@@ -86,7 +83,7 @@ function addJob(event) {
                 oClaimStatus.value = "";
 
                 oSnackbar.MaterialSnackbar.showSnackbar({
-                    message: "Property added!"
+                    message: "Property added."
                 });
                 utils.hideLoader();
             },
@@ -113,9 +110,6 @@ function addJob(event) {
             }
         );
 }
-
-
-var oCamStrm;
 
 
 function getUserMedia(options, successCallback, failureCallback) {

@@ -170,6 +170,8 @@
         //window.ECSSales.transferForm.init(data.sheetID, data.jobSplitTypes);
 
         utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
+
+        getElmById("divVer").innerHTML = "21.20:15";
     }
 
 
