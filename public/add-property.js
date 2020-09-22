@@ -20,8 +20,6 @@ const oSnackbar = getElmById("toast-container");
 
 
 (function () {
-
-
     function init(sheetID, jobSplitTypes, jobClaimStatuses) {
         // initialize dropdowns
         oJobSplitType.innerHTML = jobSplitTypes.map(utils.wrapInOption).join();
@@ -32,6 +30,8 @@ const oSnackbar = getElmById("toast-container");
 
         // set lister for `Save` button
         //oAddJobBttn.onclick = addJob.bind(null);
+
+        divVer.value = "21.20:06";
     }
 
 
