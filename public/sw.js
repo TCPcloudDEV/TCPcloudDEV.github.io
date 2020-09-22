@@ -31,7 +31,7 @@ self.addEventListener("fetch", function (event) {
         var fetchPromise = fetch(event.request).then(function(networkResponse) {
           // cache same host files only
           if (
-            requestURL.hostname === "tcpclouddev.github.io" || // TODO DS:
+            requestURL.hostname === "tcpclouddev.github.io" || // TODO ECS:
             requestURL.hostname === "localhost"
           )
             cache.put(event.request, networkResponse.clone());

@@ -1,19 +1,20 @@
 (function() {
     const utils = window.ECSSales.utils;
-
-    // Cached DOM bindings
     const getElmById = document.getElementById.bind(document);
+
+
+    const cSHEET_NAME = "ECS_Sales (Responses)_WIP"; // TODO ECS:
+    const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
+    const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
+
+    getElmById("lblVer").innerHTML = "21.21:24";
+
+
     const oAuthBttn = getElmById("authorize-bttn");
     const oSignoutBttn = getElmById("signout-button");
     const oForms = getElmById("forms");
     const oFormLoader = getElmById("form-loader");
     const oSnackbar = getElmById("toast-container");
-
-    const cSHEET_NAME = "ECS_Sales (Responses)_WIP"; // TODO DS:
-    const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
-    const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
-
-    getElmById("lblVer").innerHTML = "21.21:22";
 
     utils.hideLoader = utils.hideLoader.bind(null, oForms, oFormLoader);
     utils.showLoader = utils.showLoader.bind(null, oForms, oFormLoader);
