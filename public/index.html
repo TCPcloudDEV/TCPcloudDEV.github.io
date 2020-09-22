@@ -94,7 +94,7 @@
                     </div>
                     <br>
                     <br>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="add-job-bttn" type="submit">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="add-job-bttn" type="submit" onclick="addJob(event)">
                         Save
                     </button>
                 </form>
@@ -105,7 +105,7 @@
                         <p><button onclick="getStream()">Activate camera</button></p>
                         <p><video autoplay style="width: 240px; height: 180px; border: inset;"></video></p>
                         <p><button onclick="takePhoto()">Take Photo</button></p>
-                        <p><img id="imageTag" width="240" height="180"></p>
+                        <p><img id="imgCtrl" width="240" height="180"></p>
                     </center>
                 </div>
             </div>

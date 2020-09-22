@@ -23,7 +23,7 @@
     function addJob(event) {
         if (!AddPropertyForm.checkValidity()) return false;
 
-        alert("addJob: " + event); // !!!!!!!!!!!!!!
+        alert("addJob 2: " + event); // !!!!!!!!!!!!!!
 
         event.preventDefault();
         utils.showLoader();
@@ -103,7 +103,7 @@
         oClaimStatus.value = "";
 
         // set lister for `Save` button
-        oAddJobBttn.onclick = addJob.bind(null);
+        //oAddJobBttn.onclick = addJob.bind(null);
     }
 
 
@@ -111,6 +111,10 @@
         init,
     };
 })();
+
+
+var oCamStrm;
+
 
 function getUserMedia(options, successCallback, failureCallback) {
     var api = navigator.getUserMedia || navigator.webkitGetUserMedia ||
@@ -121,12 +125,12 @@ function getUserMedia(options, successCallback, failureCallback) {
 }
 
 
-var theStream;
-
 function getStream() {
     if (!navigator.getUserMedia && !navigator.webkitGetUserMedia &&
         !navigator.mozGetUserMedia && !navigator.msGetUserMedia) {
-        alert('User Media API not supported.');
+
+        alert("User Media API not supported.");
+
         return;
     }
 
@@ -134,41 +138,42 @@ function getStream() {
         video: true
     };
 
-    getUserMedia(constraints, function (stream) {
-        var mediaControl = document.querySelector('video');
-        if ('srcObject' in mediaControl) {
-            mediaControl.srcObject = stream;
+    getUserMedia(constraints, function (strm) {
+        var mediaControl = document.querySelector("video");
+        if ("srcObject" in mediaControl) {
+            mediaControl.srcObject = strm;
         } else if (navigator.mozGetUserMedia) {
-            mediaControl.mozSrcObject = stream;
+            mediaControl.mozSrcObject = strm;
         } else {
-            mediaControl.src = (window.URL || window.webkitURL).createObjectURL(stream);
+            mediaControl.src = (window.URL || window.webkitURL).createObjectURL(strm);
         }
-        theStream = stream;
+
+        oCamStrm = strm;
     }, function (err) {
-        alert('Error: ' + err);
+        alert("Error: " + err);
     });
 }
 
 
 function takePhoto() {
-    if (!('ImageCapture' in window)) {
+    if (!("ImageCapture" in window)) {
         alert("ImageCapture is not available.");
 
         return;
     }
 
-    if (!theStream) {
+    if (!oCamStrm) {
         alert("Failed to get video stream.");
 
         return;
     }
 
-    var theImageCapturer = new ImageCapture(theStream.getVideoTracks()[0]);
+    var img = new ImageCapture(oCamStrm.getVideoTracks()[0]);
 
-    theImageCapturer.takePhoto()
+    img.takePhoto()
         .then(blob => {
-            var theImageTag = document.getElementById("imageTag");
-            theImageTag.src = URL.createObjectURL(blob);
+            var imgCtrl = document.getElementById("imgCtrl");
+            imgCtrl.src = URL.createObjectURL(blob);
         })
         .catch(err => alert('Error: ' + err));
 }
