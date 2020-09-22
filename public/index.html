@@ -43,7 +43,7 @@
                         <div class="mdl-tabs__panel is-active" id="add-property">
                             <form id="add-property-form">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" id="cust-last-name">
+                                    <input class="mdl-textfield__input" type="text" id="cust-last-name" required>
                                     <label class="mdl-textfield__label" for="cust-last-name">Last Name</label>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -69,8 +69,11 @@
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <textarea class="mdl-textfield__input" type="text" rows="3" id="job-claim-num" required></textarea>
                                     <label class="mdl-textfield__label" for="job-claim-num">
-                                        Claim # (Insurance Company, Adjuster Name and contact info)
+                                        Claim #
                                     </label>
+                                    <span for="job-claim-num" class="mdl-tooltip">
+                                        Claim # (Insurance Company, Adjuster Name and contact info)
+                                    </span>
                                 </div>
                                 <div class="dropdown">
                                     <span>Is split?</span>
@@ -79,8 +82,11 @@
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <textarea class="mdl-textfield__input" type="text" rows="3" id="job-scope" required></textarea>
                                     <label class="mdl-textfield__label" for="job-scope">
-                                        Scope description (Wind/Hail/Roof/Siding/Windows/Gutters/Paint/Deck/Discontinued)
+                                        Scope description
                                     </label>
+                                    <span for="job-scope" class="mdl-tooltip">
+                                        Scope description (Wind/Hail/Roof/Siding/Windows/Gutters/Paint/Deck/Discontinued)
+                                    </span>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <textarea class="mdl-textfield__input" type="text" rows="3" id="job-notes"></textarea>

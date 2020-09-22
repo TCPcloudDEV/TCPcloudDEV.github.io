@@ -7,7 +7,7 @@
     const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
     const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
 
-    getElmById("lblVer").innerHTML = "21.21:25";
+    getElmById("lblVer").innerHTML = "21.21:26";
 
 
     const oAuthBttn = getElmById("authorize-bttn");
