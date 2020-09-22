@@ -59,6 +59,8 @@
         const SCOPES =
             "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly";
 
+        getElmById("divVer").innerHTML = "21.20:25";
+
         gapi.client.setApiKey(API_KEY);
         
         gapi.client
@@ -170,8 +172,6 @@
         //window.ECSSales.transferForm.init(data.sheetID, data.jobSplitTypes);
 
         utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
-
-        getElmById("divVer").innerHTML = "21.20:15";
     }
 
 
