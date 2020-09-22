@@ -30,7 +30,7 @@ var oCamStrm;
         oJobSplitType.value = "";
         oClaimStatus.value = "";
 
-        //oAddJobBttn.onclick = addJob.bind(null); -- setting this way brakes onclick="addJob()
+        //oAddJobBttn.onclick = addJob.bind(null); -- setting this way blocks "Please fill out this field" notification, used onclick="addJob()" instead
     }
 
 
