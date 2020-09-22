@@ -15,159 +15,159 @@
 </head>
 
 <body>
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <!-- Title -->
-        <span class="mdl-layout-title">
-          ECS Sales rep form
-        </span>
-        <div class="mdl-layout-spacer"></div>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="#" id="signout-button">Logout</a>
-        </nav>
-      </div>
-    </header>
-    <main class="mdl-layout__content">
-      <div class="page-content">
-        <div class="flex-container">
-          <button id="authorize-bttn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Login</button>
-          <div class="mdl-spinner mdl-js-spinner is-active" id="form-loader"></div>
-
-          <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" id="forms">
-            <div class="mdl-tabs__tab-bar">
-              <a href="#add-property" class="mdl-tabs__tab is-active"> Add/Edit property</a>
-              <a href="#transfer" class="mdl-tabs__tab"> View properties </a>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">
+                    ECS Sales rep form
+                </span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="#" id="signout-button">Logout</a>
+                </nav>
             </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="flex-container">
+                    <button id="authorize-bttn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Login</button>
+                    <div class="mdl-spinner mdl-js-spinner is-active" id="form-loader"></div>
 
-            <div class="mdl-tabs__panel is-active" id="add-property">
-                <form id="add-property-form">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="cust-last-name" required>
-                        <label class="mdl-textfield__label" for="cust-last-name">Last Name</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="cust-first-name" required>
-                        <label class="mdl-textfield__label" for="cust-first-name">First Name</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="cust-addr" required>
-                        <label class="mdl-textfield__label" for="cust-addr">Address</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="cust-city" required>
-                        <label class="mdl-textfield__label" for="cust-city">City</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="tel" id="cust-phone" required>
-                        <label class="mdl-textfield__label" for="cust-phone">Phone #</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="email" id="cust-email">
-                        <label class="mdl-textfield__label" for="cust-email">E-mail</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <textarea class="mdl-textfield__input" type="text" rows="3" id="job-claim-num" required></textarea>
-                        <label class="mdl-textfield__label" for="job-claim-num">
-                            Claim # (Insurance Company, Adjuster Name and contact info)
-                        </label>
-                    </div>
-                    <div class="dropdown">
-                        <span>Is split?</span>
-                        <select id="job-split-type" required></select>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <textarea class="mdl-textfield__input" type="text" rows="3" id="job-scope" required></textarea>
-                        <label class="mdl-textfield__label" for="job-scope">
-                            Scope description (Wind/Hail/Roof/Siding/Windows/Gutters/Paint/Deck/Discontinued)
-                        </label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <textarea class="mdl-textfield__input" type="text" rows="3" id="job-notes"></textarea>
-                        <label class="mdl-textfield__label" for="job-notes">
-                            Additional notes
-                        </label>
-                    </div>
-                    <div class="dropdown">
-                        <span>Status</span>
-                        <select id="job-claim-status" required></select>
-                    </div>
-                    <br>
-                    <br>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="add-job-bttn" type="submit" onclick="addJob()">
-                        Save
-                    </button>
-                </form>
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" id="forms">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#add-property" class="mdl-tabs__tab is-active"> Add/Edit property</a>
+                            <a href="#transfer" class="mdl-tabs__tab"> View properties </a>
+                        </div>
 
-                <br /><br /><br />
-                <div>
-                    <center>
-                        <p><button onclick="getStream()">Activate camera</button></p>
-                        <p><video autoplay style="width: 240px; height: 180px; border: inset;"></video></p>
-                        <p><button onclick="takePhoto()">Take Photo</button></p>
-                        <p><img id="imgCtrl" width="240" height="180"></p>
-                    </center>
-                </div>
-            </div>
-
-            <div class="mdl-tabs__panel" id="transfer">
-              <form id="transfer-form">
-                <p id="tt1"><i class="material-icons">info</i>&nbsp;What is this?</p>
-                <span for="tt1" class="mdl-tooltip">Record a transaction which is not expense/income. e.g. paying for your credit card bills (saving account -> credit card), withdrawing cash (checkings account -> cash), or making an investment.</span>
-
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" id="transfer-description" required>
-                  <label class="mdl-textfield__label" for="transfer-description">Description</label>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="date" id="transfer-date" required>
-                  <label class="mdl-textfield__label" for="transfer-date">Date</label>
-                </div>
-                <div class="dropdown">
-                  <span>From Account</span>
-                  <select id="transfer-from-account" required>
-                  </select>
-                </div>
-                <div class="dropdown">
-                  <span>To Account</span>
-                  <select id="transfer-to-account" required>
-                  </select>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="number" id="transfer-amount" step="0.01" data-required>
-                  <label class="mdl-textfield__label" for="transfer-amount">Amount</label>
-                </div>
-                <br>
-                <br>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="save" type="submit"
-                  onclick="addJob(event)">
+                        <div class="mdl-tabs__panel is-active" id="add-property">
+                            <form id="add-property-form">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="cust-last-name" required>
+                                    <label class="mdl-textfield__label" for="cust-last-name">Last Name</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="cust-first-name" required>
+                                    <label class="mdl-textfield__label" for="cust-first-name">First Name</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="cust-addr" required>
+                                    <label class="mdl-textfield__label" for="cust-addr">Address</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="cust-city" required>
+                                    <label class="mdl-textfield__label" for="cust-city">City</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="tel" id="cust-phone" required>
+                                    <label class="mdl-textfield__label" for="cust-phone">Phone #</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="email" id="cust-email">
+                                    <label class="mdl-textfield__label" for="cust-email">E-mail</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <textarea class="mdl-textfield__input" type="text" rows="3" id="job-claim-num" required></textarea>
+                                    <label class="mdl-textfield__label" for="job-claim-num">
+                                        Claim # (Insurance Company, Adjuster Name and contact info)
+                                    </label>
+                                </div>
+                                <div class="dropdown">
+                                    <span>Is split?</span>
+                                    <select id="job-split-type" required></select>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <textarea class="mdl-textfield__input" type="text" rows="3" id="job-scope" required></textarea>
+                                    <label class="mdl-textfield__label" for="job-scope">
+                                        Scope description (Wind/Hail/Roof/Siding/Windows/Gutters/Paint/Deck/Discontinued)
+                                    </label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <textarea class="mdl-textfield__input" type="text" rows="3" id="job-notes"></textarea>
+                                    <label class="mdl-textfield__label" for="job-notes">
+                                        Additional notes
+                                    </label>
+                                </div>
+                                <div class="dropdown">
+                                    <span>Status</span>
+                                    <select id="job-claim-status" required></select>
+                                </div>
+                                <br>
+                                <br>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="add-job-bttn" type="submit" onclick="addJob()">
                                     Save
-                </button>
-              </form>
+                                </button>
+                            </form>
+
+                            <br /><br /><br />
+                            <div>
+                                <center>
+                                    <p><button onclick="getStream()">Activate camera</button></p>
+                                    <p><video autoplay style="width: 240px; height: 180px; border: inset;"></video></p>
+                                    <p><button onclick="takePhoto()">Take Photo</button></p>
+                                    <p><img id="imgCtrl" width="240" height="180"></p>
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="mdl-tabs__panel" id="transfer">
+                            <form id="transfer-form">
+                                <p id="tt1"><i class="material-icons">info</i>&nbsp;What is this?</p>
+                                <span for="tt1" class="mdl-tooltip">Record a transaction which is not expense/income. e.g. paying for your credit card bills (saving account -> credit card), withdrawing cash (checkings account -> cash), or making an investment.</span>
+
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="transfer-description" required>
+                                    <label class="mdl-textfield__label" for="transfer-description">Description</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="date" id="transfer-date" required>
+                                    <label class="mdl-textfield__label" for="transfer-date">Date</label>
+                                </div>
+                                <div class="dropdown">
+                                    <span>From Account</span>
+                                    <select id="transfer-from-account" required>
+                                    </select>
+                                </div>
+                                <div class="dropdown">
+                                    <span>To Account</span>
+                                    <select id="transfer-to-account" required>
+                                    </select>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="number" id="transfer-amount" step="0.01" data-required>
+                                    <label class="mdl-textfield__label" for="transfer-amount">Amount</label>
+                                </div>
+                                <br>
+                                <br>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="save" type="submit"
+                                        onclick="addJob(event)">
+                                    Save
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="toast-container" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                </div>
             </div>
-          </div>
+        </main>
+    </div>
 
-          <footer class="footer" size="mega">
-              Copyright 2020 <a href="https://www.estateclaimservices.com/contact.html">Estate Claim Services, LLC</a> - All Rights Reserved.&emsp;<a href="https://www.estateclaimservices.com/privacy-notice.html">Privacy Notice</a>&emsp;ver: <div id="divVer" />
-          </footer>
-        </div>
-        <div id="toast-container" class="mdl-js-snackbar mdl-snackbar">
-          <div class="mdl-snackbar__text"></div>
-          <button class="mdl-snackbar__action" type="button"></button>
-        </div>
-      </div>
-    </main>
-  </div>
+    <footer class="footer">
+        Copyright 2020 <a href="https://www.estateclaimservices.com/contact.html">Estate Claim Services, LLC</a> - All Rights Reserved.&emsp;<a href="https://www.estateclaimservices.com/privacy-notice.html">Privacy Notice</a>&emsp;ver: <div id="divVer" />
+    </footer>
 
-  <script type="text/javascript" src="utils.js"></script>
-  <script type="text/javascript" src="add-property.js"></script>
-  <script type="text/javascript" src="transfer.js"></script>
-  <script type="text/javascript" src="init.js"></script>
-  <script type="text/javascript" src="register-serviceworker.js"></script>
+    <script type="text/javascript" src="utils.js"></script>
+    <script type="text/javascript" src="add-property.js"></script>
+    <script type="text/javascript" src="transfer.js"></script>
+    <script type="text/javascript" src="init.js"></script>
+    <script type="text/javascript" src="register-serviceworker.js"></script>
 
-  <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()"
-    id="google-api">
-
+    <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()"
+            id="google-api">
     </script>
 </body>
 
