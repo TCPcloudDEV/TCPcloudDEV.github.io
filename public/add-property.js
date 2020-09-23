@@ -40,73 +40,84 @@ var oCamStrm;
 
 
 function addJob() {
-    if (!AddPropertyForm.checkValidity()) return false;
+    try {
+        if (!AddPropertyForm.checkValidity()) return false;
 
-    utils.showLoader();
+        utils.showLoader();
 
-    var now = new Date();
+        var now = new Date();
 
-    gapi.client.sheets.spreadsheets.values
-        .append(
-            utils.appendRequestObj([
-                [
-                    `=DATE(${now.getFullYear()}, ${now.getMonth()}, ${now.getDate()}) + TIME(${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()})`,
-                    oCustLastName.value,
-                    oCustFirstName.value,
-                    oCustAddr.value,
-                    oCustCity.value,
-                    oCustPhone.value,
-                    oCustEmail.value,
-                    oCustClaimNum.value,
-                    oJobSplitType.value,
-                    oJobScope.value,
-                    oJobNotes.value,
-                    oClaimStatus.value
-                ]
-            ])
-        )
-        .then(
-            response => {
-                // reset fileds
-                oCustLastName.value = "";
-                oCustFirstName.value = "";
-                oCustAddr.value = "";
-                oCustCity.value = "";
-                oCustPhone.value = "";
-                oCustEmail.value = "";
-                oCustClaimNum.value = "";
-                oJobSplitType.value = "";
-                oJobScope.value = "";
-                oJobNotes.value = "";
-                oClaimStatus.value = "";
+        gapi.client.sheets.spreadsheets.values
+            .append(
+                utils.appendRequestObj([
+                    [
+                        `=DATE(${now.getFullYear()}, ${now.getMonth()}, ${now.getDate()}) + TIME(${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()})`,
+                        oCustLastName.value,
+                        oCustFirstName.value,
+                        oCustAddr.value,
+                        oCustCity.value,
+                        oCustPhone.value,
+                        oCustEmail.value,
+                        oCustClaimNum.value,
+                        oJobSplitType.value,
+                        oJobScope.value,
+                        oJobNotes.value,
+                        oClaimStatus.value
+                    ]
+                ])
+            )
+            .then(
+                response => {
+                    // reset fileds
+                    oCustLastName.value = "";
+                    oCustFirstName.value = "";
+                    oCustAddr.value = "";
+                    oCustCity.value = "";
+                    oCustPhone.value = "";
+                    oCustEmail.value = "";
+                    oCustClaimNum.value = "";
+                    oJobSplitType.value = "";
+                    oJobScope.value = "";
+                    oJobNotes.value = "";
+                    oClaimStatus.value = "";
 
-                oSnackbar.MaterialSnackbar.showSnackbar({
-                    message: "Property added."
-                });
-                utils.hideLoader();
-            },
-            response => {
-                utils.hideLoader();
+                    oSnackbar.MaterialSnackbar.showSnackbar({
+                        message: "Property added."
+                    });
+                    utils.hideLoader();
+                },
+                response => {
+                    utils.hideLoader();
 
-                let message = "Sorry, something went wrong";
-                if (response.status === 403) {
-                    message = "Please copy the sheet in your drive";
+                    let message = "Sorry, something went wrong";
+                    if (response.status === 403) {
+                        message = "Please copy the sheet in your drive";
+                    }
+
+                    console.log(response);
+                    oSnackbar.MaterialSnackbar.showSnackbar({
+                        message,
+                        actionHandler: () => {
+                            window.open(
+                                "https://www.estateclaimservices.com/contact.html",
+                                "_blank"
+                            );
+                        },
+                        actionText: "Details",
+                        timeout: 5 * 60 * 1000
+                    });
                 }
+            );
+    } catch (err) {
+        var msg = "Error: " + err.message;
 
-                console.log(response);
-                oSnackbar.MaterialSnackbar.showSnackbar({
-                    message,
-                    actionHandler: () => {
-                        window.open(
-                            "https://www.estateclaimservices.com/contact.html",
-                            "_blank"
-                        );
-                    },
-                    actionText: "Details",
-                    timeout: 5 * 60 * 1000
-                });
-            }
-        );
+        console.error(msg);
+
+        oSnackbar.MaterialSnackbar.showSnackbar({
+            message: msg,
+            severity: "error"
+        });
+    }
 }
 
 
