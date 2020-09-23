@@ -24,7 +24,7 @@
             });
 
 
-            gapi.client.sheets.spreadsheets.values
+            /*gapi.client.sheets.spreadsheets.values
                 .get(
                     utils.getRequestObj("Pipeline!A3:G")
                 )
@@ -33,7 +33,7 @@
 
                         /*oSnackbar.MaterialSnackbar.showSnackbar({
                             message: "Expense added!"
-                        });*/
+                        });*
 
                         utils.hideLoader();
                     },
@@ -58,7 +58,7 @@
                             timeout: 5 * 60 * 1000
                         });
                     }
-                );
+                );*/
         } catch (err) {
             console.error(err);
         }
