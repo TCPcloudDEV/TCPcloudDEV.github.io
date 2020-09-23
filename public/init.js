@@ -1,5 +1,8 @@
 var gl_sheetId;
 
+const verId = "0.35";
+
+
 (function () {
     const utils = window.ECSSales.utils;
     const getElmById = document.getElementById.bind(document);
@@ -9,14 +12,13 @@ var gl_sheetId;
     const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
     const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
 
-    getElmById("lblVer").innerHTML = "0.34";
-
-
     const oAuthBttn = getElmById("authorize-bttn");
     const oSignoutBttn = getElmById("signout-button");
     const oForms = getElmById("forms");
     const oFormLoader = getElmById("form-loader");
     const oSnackbar = getElmById("toast-container");
+
+    getElmById("lblVer").innerHTML = verId;
 
     utils.hideLoader = utils.hideLoader.bind(null, oForms, oFormLoader);
     utils.showLoader = utils.showLoader.bind(null, oForms, oFormLoader);
@@ -171,7 +173,7 @@ var gl_sheetId;
             data.jobClaimStatuses
         );
 
-        window.ECSSales.transferForm.init(data.sheetID, data.jobSplitTypes);
+        window.ECSSales.ListPropertiesForm.init(data.sheetID, data.jobSplitTypes);
 
         utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
     }
