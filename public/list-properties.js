@@ -14,6 +14,15 @@
         utils.showLoader();
 
         try {
+            var request = gapi.client.sheets.spreadsheets.values.get(utils.getRequestObj("Pipeline!A3:G"));
+
+            request.then(function (response) {
+                console.log(response.result);
+            }, function (reason) {
+                console.error('error: ' + reason.result.error.message);
+            });
+
+
             gapi.client.sheets.spreadsheets.values
                 .get(
                     utils.getRequestObj("Pipeline!A3:G")
