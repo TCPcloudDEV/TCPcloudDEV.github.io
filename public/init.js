@@ -1,4 +1,4 @@
-const verId = "0.51";
+const verId = "0.52";
 
 
 (function () {
@@ -169,7 +169,7 @@ const verId = "0.51";
             data.jobClaimStatuses
         );
 
-        window.ECSSales.ListPropertiesForm.init(data.sheetID, data.jobSplitTypes);
+        window.ECSSales.ListPropertiesForm.init(data.sheetID);
 
         utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
     }

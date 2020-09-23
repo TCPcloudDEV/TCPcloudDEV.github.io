@@ -2,8 +2,8 @@
     const utils = window.ECSSales.utils;
 
     const getElmById = document.getElementById.bind(document);
-    const oListPropertiesForm = getElmById("transfer-form");
-    const oGetPropertiesBttn = byID("get-properties-bttn");
+    const oListPropertiesForm = getElmById("list-properties-form");
+    const oGetPropertiesBttn = getElmById("get-properties-bttn");
 
     const oSnackbar = getElmById("toast-container");
 
@@ -52,7 +52,7 @@
     }
 
 
-    function init(sheetID, accounts) {
+    function init(sheetID) {
         const parms = {
             spreadsheetId: sheetID,
             range: "Pipeline!A3:G",
