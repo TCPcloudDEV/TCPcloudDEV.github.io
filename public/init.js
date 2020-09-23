@@ -16,8 +16,6 @@ const verId = "0.36";
     const oFormLoader = getElmById("form-loader");
     const oSnackbar = getElmById("toast-container");
 
-    verId = "test";
-
     getElmById("lblVer").innerHTML = verId;
 
     utils.hideLoader = utils.hideLoader.bind(null, oForms, oFormLoader);
