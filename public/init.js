@@ -1,6 +1,4 @@
-var gl_sheetId;
-
-const verId = "0.35";
+const verId = "0.36";
 
 
 (function () {
@@ -17,6 +15,8 @@ const verId = "0.35";
     const oForms = getElmById("forms");
     const oFormLoader = getElmById("form-loader");
     const oSnackbar = getElmById("toast-container");
+
+    verId = "test";
 
     getElmById("lblVer").innerHTML = verId;
 
@@ -163,8 +163,6 @@ const verId = "0.35";
 
 
     function initApp(data) {
-        gl_sheetId = data.sheetID;
-
         utils.hideLoader();
 
         window.ECSSales.AddPropertyForm.init(

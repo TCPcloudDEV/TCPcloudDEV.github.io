@@ -1,15 +1,16 @@
 var CACHE_NAME = "ecs-sales-cache";
 var urlsToCache = [
-  "style.css",
-  "icons/favicon-32x32.png",
-  "icons/favicon-16x16.png",
-  "init.js",
-  "list-properties.js",
-  "utils.js",
-  "add-property.js",
-  "vendor/mdl/material.min.js", // https://getmdl.io/components/index.html
-  "vendor/mdl/material.min.css"
+    "style.css",
+    "icons/favicon-32x32.png",
+    "icons/favicon-16x16.png",
+    "init.js",
+    "utils.js",
+    "add-property.js",
+    "list-properties.js",
+    "vendor/mdl/material.min.js", // https://getmdl.io/components/index.html
+    "vendor/mdl/material.min.css"
 ];
+
 
 // cache after the first install
 self.addEventListener("install", function(event) {
