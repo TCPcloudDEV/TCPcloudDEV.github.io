@@ -96,7 +96,8 @@
 
 
         var props = gapi.client.sheets.spreadsheets.values.get(req);
-        var cnt = props;
+        var data = JSON.stringify(props, null, 2);
+        var cnt = JSON.stringify(props.data, null, 2);
 
         // In MDL - `required` input fields are invalid on page load by default (which looks bad).
         // Fix: https://github.com/google/material-design-lite/issues/1502#issuecomment-257405822
