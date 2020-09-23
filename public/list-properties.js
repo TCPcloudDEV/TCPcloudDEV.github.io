@@ -14,15 +14,12 @@
         utils.showLoader();
 
         try {
-            var rrr = utils.batchGetRequestObj(["Pipeline!A3:G"]);
-
             gapi.client.sheets.spreadsheets.values
                 .batchGet(
-                    rrr
+                    utils.batchGetRequestObj(["Pipeline!A3:G"])
                 )
-                .then(
-                    response => {
-                        response.result;
+                .then(response => {
+                        var rrr = response.result;
 
                         /*oSnackbar.MaterialSnackbar.showSnackbar({
                             message: "Expense added!"
