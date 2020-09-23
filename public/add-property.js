@@ -1,7 +1,7 @@
 const utils = window.ECSSales.utils;
 
 const getElmById = document.getElementById.bind(document);
-const AddPropertyForm = getElmById("add-property-form");
+const oAddPropertyForm = getElmById("add-property-form");
 const oCustLastName = getElmById("cust-last-name");
 const oCustFirstName = getElmById("cust-first-name");
 const oCustAddr = getElmById("cust-addr");
