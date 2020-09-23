@@ -111,7 +111,7 @@ function addJob() {
     } catch (err) {
         var msg = "Error: " + err.message;
 
-        console.error(msg);
+        console.log(msg);
 
         oSnackbar.MaterialSnackbar.showSnackbar({
             message: msg,
