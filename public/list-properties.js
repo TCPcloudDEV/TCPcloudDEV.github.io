@@ -13,42 +13,46 @@
 
         utils.showLoader();
 
-        gapi.client.sheets.spreadsheets.values
-            .get(
-                utils.batchGetRequestObj([ ["Pipeline!A3:G"] ])
-            )
-            .then (
-                response => {
-                    response.result;
+        try {
+            gapi.client.sheets.spreadsheets.values
+                .get(
+                    utils.batchGetRequestObj([["Pipeline!A3:G"]])
+                )
+                .then(
+                    response => {
+                        response.result;
 
-                    /*oSnackbar.MaterialSnackbar.showSnackbar({
-                        message: "Expense added!"
-                    });*/
+                        /*oSnackbar.MaterialSnackbar.showSnackbar({
+                            message: "Expense added!"
+                        });*/
 
-                    utils.hideLoader();
-                },
-                response => {
-                    utils.hideLoader();
+                        utils.hideLoader();
+                    },
+                    response => {
+                        utils.hideLoader();
 
-                    let message = "Sorry, something went wrong";
-                    if (response.status === 403) {
-                        message = "Please copy the sheet in your drive";
+                        let message = "Sorry, something went wrong";
+                        if (response.status === 403) {
+                            message = "Please copy the sheet in your drive";
+                        }
+
+                        console.log(response);
+                        oSnackbar.MaterialSnackbar.showSnackbar({
+                            message,
+                            actionHandler: () => {
+                                window.open(
+                                    "https://www.estateclaimservices.com/contact.html",
+                                    "_blank"
+                                );
+                            },
+                            actionText: "Details",
+                            timeout: 5 * 60 * 1000
+                        });
                     }
-
-                    console.log(response);
-                    oSnackbar.MaterialSnackbar.showSnackbar({
-                        message,
-                        actionHandler: () => {
-                            window.open(
-                            "https://www.estateclaimservices.com/contact.html",
-                            "_blank"
-                            );
-                        },
-                        actionText: "Details",
-                        timeout: 5 * 60 * 1000
-                    });
-                }
-            );
+                );
+        } catch (err) {
+            console.error(err);
+        }
     }
 
 
