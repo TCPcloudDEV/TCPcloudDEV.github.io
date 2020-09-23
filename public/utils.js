@@ -91,7 +91,6 @@
             spreadsheetId,
             range,
             dateTimeRenderOption: "FORMATTED_STRING",
-            majorDimension: "COLUMNS",
             valueRenderOption: "FORMATTED_VALUE"
         };
     }
