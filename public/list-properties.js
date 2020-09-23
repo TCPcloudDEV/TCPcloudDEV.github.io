@@ -1,15 +1,11 @@
 (function() {
     const utils = window.ECSSales.utils;
 
-    const byID = document.getElementById.bind(document);
-    const oListPropertiesForm = byID("transfer-form");
-    const descriptionEl = byID("transfer-description");
-    const dateEl = byID("transfer-date");
-    const fromAccountEl = byID("transfer-from-account");
-    const toAccountEl = byID("transfer-to-account");
-    const amountEl = byID("transfer-amount");
-    const saveBtn = byID("save");
-    const snackbarContainer = byID("toast-container");
+    const getElmById = document.getElementById.bind(document);
+    const oListPropertiesForm = getElmById("transfer-form");
+    const oGetPropertiesBttn = byID("get-properties-bttn");
+
+    const oSnackbar = getElmById("toast-container");
 
 
     function getProperties(event) {
@@ -25,7 +21,7 @@
                 response => {
                     response.result;
 
-                    /*snackbarContainer.MaterialSnackbar.showSnackbar({
+                    /*oSnackbar.MaterialSnackbar.showSnackbar({
                         message: "Expense added!"
                     });*/
 
@@ -40,7 +36,7 @@
                     }
 
                     console.log(response);
-                    snackbarContainer.MaterialSnackbar.showSnackbar({
+                    oSnackbar.MaterialSnackbar.showSnackbar({
                         message,
                         actionHandler: () => {
                             window.open(
@@ -88,8 +84,8 @@
         .querySelectorAll("*[data-required]")
         .forEach(e => (e.required = true));
 
-        // set lister for `Save` button
-        //saveBtn.onclick = save.bind(null);
+        // set lister for button
+        oGetPropertiesBttn.onclick = getProperties.bind(null);
     }
 
 
