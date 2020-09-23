@@ -1,4 +1,6 @@
-(function() {
+var gl_sheetId;
+
+(function () {
     const utils = window.ECSSales.utils;
     const getElmById = document.getElementById.bind(document);
 
@@ -159,6 +161,8 @@
 
 
     function initApp(data) {
+        gl_sheetId = data.sheetID;
+
         utils.hideLoader();
 
         window.ECSSales.AddPropertyForm.init(

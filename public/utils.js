@@ -46,7 +46,7 @@
 
       // The A1 notation of a range to search for a logical table of data.
       // Values will be appended after the last row of the table.
-        range: "Pipeline!A3",
+      range: "Pipeline!A3",
 
       includeValuesInResponse: true,
 

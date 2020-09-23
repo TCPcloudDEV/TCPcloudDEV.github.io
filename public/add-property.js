@@ -181,6 +181,7 @@ function savePhoto() {
         mimeType: 'image/jpeg',
         body: document.getElementById("imgCtrl").createReadStream('files/photo.jpg')
     };
+
     drive.files.create({
         resource: fileMetadata,
         media: media,
