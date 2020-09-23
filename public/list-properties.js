@@ -89,7 +89,7 @@
     function init(sheetID, accounts) {
         const req = {
             spreadsheetId: sheetID,
-            range: "Pipeline!A3:G",
+            range: "Pipeline!A3:G5",
 
             responseValueRenderOption: "FORMATTED_VALUE",
         };
