@@ -86,29 +86,30 @@
       );
   }
 
-  function init(sheetID, accounts) {
-      alert(gl_sheetId + " : " + sheetID);
+    function init(sheetID, accounts) {
+        alert(gl_sheetId + " : " + sheetID);
 
 
-    // set date picker's defalt value as today
-    dateEl.value = new Date().toISOString().substr(0, 10);
-    accounts = accounts.sort();
+        // set date picker's defalt value as today
+        dateEl.value = new Date().toISOString().substr(0, 10);
+        accounts = accounts.sort();
 
-    // initialize accounts and categories dropdown
-    fromAccountEl.innerHTML = accounts.map(utils.wrapInOption).join();
-    toAccountEl.innerHTML = accounts.map(utils.wrapInOption).join();
+        // initialize accounts and categories dropdown
+        fromAccountEl.innerHTML = accounts.map(utils.wrapInOption).join();
+        toAccountEl.innerHTML = accounts.map(utils.wrapInOption).join();
 
-    // In MDL - `required` input fields are invalid on page load by default (which looks bad).
-    // Fix: https://github.com/google/material-design-lite/issues/1502#issuecomment-257405822
-    document
-      .querySelectorAll("*[data-required]")
-      .forEach(e => (e.required = true));
+        // In MDL - `required` input fields are invalid on page load by default (which looks bad).
+        // Fix: https://github.com/google/material-design-lite/issues/1502#issuecomment-257405822
+        document
+        .querySelectorAll("*[data-required]")
+        .forEach(e => (e.required = true));
 
-    // set lister for `Save` button
-    saveBtn.onclick = save.bind(null);
-  }
+        // set lister for `Save` button
+        saveBtn.onclick = save.bind(null);
+    }
 
-  window.expenseManager.transferForm = {
-    init
-  };
+
+    window.ECSSales.ListPropertiesForm = {
+        init
+    };
 })();

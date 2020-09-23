@@ -9,7 +9,7 @@ var gl_sheetId;
     const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
     const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
 
-    getElmById("lblVer").innerHTML = "0.33";
+    getElmById("lblVer").innerHTML = "0.34";
 
 
     const oAuthBttn = getElmById("authorize-bttn");
