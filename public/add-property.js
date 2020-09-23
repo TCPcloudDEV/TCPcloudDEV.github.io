@@ -111,11 +111,11 @@ function addJob() {
     } catch (err) {
         var msg = "Error: " + err.message;
 
-        console.log(msg);
+        console.error(msg);
 
         oSnackbar.MaterialSnackbar.showSnackbar({
             message: msg,
-            severity: "error"
+            actionText: "Error"
         });
     }
 }
