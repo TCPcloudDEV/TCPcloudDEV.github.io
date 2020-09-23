@@ -1,4 +1,4 @@
-const verId = "0.52";
+const verId = "0.53";
 
 
 (function () {
@@ -172,6 +172,7 @@ const verId = "0.52";
         window.ECSSales.ListPropertiesForm.init(data.sheetID);
 
         utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
+        utils.batchGetRequestObj = utils.batchGetRequestObj.bind(null, data.sheetID)
     }
 
 
