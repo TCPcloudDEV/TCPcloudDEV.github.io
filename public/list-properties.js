@@ -89,14 +89,21 @@
     function init(sheetID, accounts) {
         const parms = {
             spreadsheetId: sheetID,
-            range: "Pipeline!A3:G5",
+            range: "Pipeline!A3:G",
 
-            responseValueRenderOption: "FORMATTED_VALUE",
+            // How values should be represented in the output.
+            // The default render option is ValueRenderOption.FORMATTED_VALUE.
+            valueRenderOption: '',
+
+            // How dates, times, and durations should be represented in the output.
+            // This is ignored if value_render_option is
+            // FORMATTED_VALUE.
+            // The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+            dateTimeRenderOption: '',
         };
 
 
         var request = gapi.client.sheets.spreadsheets.values.get(parms);
-        var data = JSON.stringify(request, null, 2);
 
         request.then(function (response) {
             console.log(response.result);
