@@ -87,7 +87,15 @@
   }
 
     function init(sheetID, accounts) {
-        var props = gapi.client.sheets.spreadsheets.values.get(sheetID, "Pipeline!A3:G");
+        const req = {
+            sheetID,
+            range: "Pipeline!A3:G",
+
+            responseValueRenderOption: "FORMATTED_VALUE",
+        };
+
+
+        var props = gapi.client.sheets.spreadsheets.values.get(req);
         var cnt = props;
 
         // In MDL - `required` input fields are invalid on page load by default (which looks bad).
