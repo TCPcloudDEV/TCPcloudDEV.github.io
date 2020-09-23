@@ -12,7 +12,7 @@ body {
   width: 100vw;
 }
 
-#add-property-form, #transfer-form {
+#add-property-form, #list-properties-form {
     display: flex;
     flex-direction: column;
     align-items: center;

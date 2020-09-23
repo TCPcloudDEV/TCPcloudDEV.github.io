@@ -9,7 +9,7 @@ var gl_sheetId;
     const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
     const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
 
-    getElmById("lblVer").innerHTML = "0.32";
+    getElmById("lblVer").innerHTML = "0.33";
 
 
     const oAuthBttn = getElmById("authorize-bttn");
@@ -171,7 +171,7 @@ var gl_sheetId;
             data.jobClaimStatuses
         );
 
-        //window.ECSSales.transferForm.init(data.sheetID, data.jobSplitTypes);
+        window.ECSSales.transferForm.init(data.sheetID, data.jobSplitTypes);
 
         utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
     }

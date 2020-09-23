@@ -87,7 +87,8 @@
   }
 
   function init(sheetID, accounts) {
-      alert(gl_sheetId);
+      alert(gl_sheetId + " : " + sheetID);
+
 
     // set date picker's defalt value as today
     dateEl.value = new Date().toISOString().substr(0, 10);

@@ -4,7 +4,7 @@ var urlsToCache = [
   "icons/favicon-32x32.png",
   "icons/favicon-16x16.png",
   "init.js",
-  "transfer.js",
+  "list-properties.js",
   "utils.js",
   "add-property.js",
   "vendor/mdl/material.min.js", // https://getmdl.io/components/index.html
