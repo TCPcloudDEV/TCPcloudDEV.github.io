@@ -99,7 +99,7 @@
             // This is ignored if value_render_option is
             // FORMATTED_VALUE.
             // The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
-            dateTimeRenderOption: "",
+            dateTimeRenderOption: "FORMATTED_STRING",
         };
 
 
