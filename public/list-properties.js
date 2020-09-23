@@ -87,7 +87,7 @@
   }
 
     function init(sheetID, accounts) {
-        const req = {
+        const parms = {
             spreadsheetId: sheetID,
             range: "Pipeline!A3:G5",
 
@@ -95,7 +95,7 @@
         };
 
 
-        var props = gapi.client.sheets.spreadsheets.values.get(req);
+        var request = gapi.client.sheets.spreadsheets.values.get(parms);
         var data = JSON.stringify(props, null, 2);
 
         request.then(function (response) {
