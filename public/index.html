@@ -100,7 +100,7 @@
                                 </div>
                                 <br>
                                 <br>
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="add-job-bttn" type="submit" onclick="addJob()">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="add-job-bttn" type="submit">
                                     Save
                                 </button>
                             </form>
@@ -153,8 +153,7 @@
     <script type="text/javascript" src="init.js"></script>
     <script type="text/javascript" src="register-serviceworker.js"></script>
 
-    <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
-            id="google-api">
+    <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
 </body>
 
