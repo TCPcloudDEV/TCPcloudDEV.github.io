@@ -15,7 +15,7 @@
 
         gapi.client.sheets.spreadsheets.values
             .get(
-                utils.batchGetRequestObj(["Pipeline!A3:G"])
+                utils.batchGetRequestObj([ ["Pipeline!A3:G"] ])
             )
             .then (
                 response => {
