@@ -96,7 +96,7 @@
 
 
         var request = gapi.client.sheets.spreadsheets.values.get(parms);
-        var data = JSON.stringify(props, null, 2);
+        var data = JSON.stringify(request, null, 2);
 
         request.then(function (response) {
             console.log(response.result);
