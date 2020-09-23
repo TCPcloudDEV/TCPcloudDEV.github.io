@@ -125,28 +125,10 @@
                                     <input class="mdl-textfield__input" type="text" id="transfer-description" required>
                                     <label class="mdl-textfield__label" for="transfer-description">Description</label>
                                 </div>
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="date" id="transfer-date" required>
-                                    <label class="mdl-textfield__label" for="transfer-date">Date</label>
-                                </div>
-                                <div class="dropdown">
-                                    <span>From Account</span>
-                                    <select id="transfer-from-account" required>
-                                    </select>
-                                </div>
-                                <div class="dropdown">
-                                    <span>To Account</span>
-                                    <select id="transfer-to-account" required>
-                                    </select>
-                                </div>
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="number" id="transfer-amount" step="0.01" data-required>
-                                    <label class="mdl-textfield__label" for="transfer-amount">Amount</label>
-                                </div>
                                 <br>
                                 <br>
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="save" type="submit"
-                                        onclick="addJob(event)">
+                                        onclick="getProperties(event)">
                                     Save
                                 </button>
                             </form>

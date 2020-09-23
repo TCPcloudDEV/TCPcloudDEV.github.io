@@ -12,7 +12,7 @@
     const snackbarContainer = byID("toast-container");
 
 
-    function save(event) {
+    function getProperties(event) {
         if (!oListPropertiesForm.checkValidity()) return false;
 
         utils.showLoader();
@@ -89,7 +89,7 @@
         .forEach(e => (e.required = true));
 
         // set lister for `Save` button
-        saveBtn.onclick = save.bind(null);
+        //saveBtn.onclick = save.bind(null);
     }
 
 
