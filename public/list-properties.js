@@ -23,12 +23,11 @@
             )
             .then (
                 response => {
-                    // reset fileds
-                    descriptionEl.value = "";
-                    amountEl.value = "";
-                    snackbarContainer.MaterialSnackbar.showSnackbar({
+                    response.result;
+
+                    /*snackbarContainer.MaterialSnackbar.showSnackbar({
                         message: "Expense added!"
-                    });
+                    });*/
 
                     utils.hideLoader();
                 },
