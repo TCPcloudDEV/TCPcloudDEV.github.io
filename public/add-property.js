@@ -104,7 +104,7 @@ var oCamStrm;
         oClaimStatus.value = "";
 
         // set lister for buttons
-        oAddJobBttn.onclick = addJob.bind(null);
+        //oAddJobBttn.onclick = addJob.bind(null);
     }
 
 
