@@ -49,19 +49,19 @@
                     var row = tableRef.insertRow();
 
                     var clm0 = row.insertCell(0);
-                    clm0.appendChild(aPropInfo[0]);
+                    clm0.appendChild(document.createTextNode(aPropInfo[0]));
 
                     var clm1 = row.insertCell(1);
-                    clm1.appendChild(aPropInfo[3] + ", " + aPropInfo[4]);
+                    clm1.appendChild(document.createTextNode(aPropInfo[3] + ", " + aPropInfo[4]));
 
                     var clm2 = row.insertCell(2);
-                    clm2.appendChild(aPropInfo[1] + ", " + aPropInfo[2]);
+                    clm2.appendChild(document.createTextNode(aPropInfo[1] + ", " + aPropInfo[2]));
 
                     var clm3 = row.insertCell(3);
-                    clm3.appendChild("<a href='tel:"+ aPropInfo[5] +"'>"+ aPropInfo[5] +"</a>");
+                    clm3.appendChild(document.createTextNode("<a href='tel:"+ aPropInfo[5] +"'>"+ aPropInfo[5] +"</a>"));
 
                     var clm4 = row.insertCell(4);
-                    clm4.appendChild("<a href='mailto:" + aPropInfo[6] + "'>" + aPropInfo[6] + "</a>");
+                    clm4.appendChild(document.createTextNode("<a href='mailto:" + aPropInfo[6] + "'>" + aPropInfo[6] + "</a>"));
                 });
 
                 utils.showMsg(oSnackbar, "Data retrived");
@@ -81,7 +81,7 @@
             });
 
         // set lister for buttons
-        oGetPropertiesBttn.onclick = getProperties.bind(null);
+        //oGetPropertiesBttn.onclick = getProperties.bind(null);
     }
 
 
