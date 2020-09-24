@@ -58,7 +58,7 @@
                     clm2.appendChild(document.createTextNode(aPropInfo[1] + ", " + aPropInfo[2]));
 
                     var clm3 = row.insertCell(3);
-                    var node3 = document.createTextNode();
+                    var node3 = document.createTextNode("");
                     node3.innerHTML = "<a href='tel:" + aPropInfo[5] + "'>" + aPropInfo[5] + "</a>";
                     clm3.appendChild(node3);
 
