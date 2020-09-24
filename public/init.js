@@ -1,4 +1,4 @@
-const verId = "0.12";
+const verId = "0.15";
 
 
 (function () {
@@ -173,6 +173,12 @@ const verId = "0.12";
 
         utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
         utils.getRequestObj = utils.getRequestObj.bind(null, data.sheetID)
+
+        // In MDL - `required` input fields are invalid on page load by default (which looks bad).
+        // Fix: https://github.com/google/material-design-lite/issues/1502#issuecomment-257405822
+        document
+            .querySelectorAll("*[data-required]")
+            .forEach(e => (e.required = true));
     }
 
 

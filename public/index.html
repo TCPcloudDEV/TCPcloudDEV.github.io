@@ -43,23 +43,23 @@
                         <div class="mdl-tabs__panel is-active" id="add-property">
                             <form id="add-property-form">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" id="cust-last-name" required>
+                                    <input class="mdl-textfield__input" type="text" id="cust-last-name" data-required>
                                     <label class="mdl-textfield__label" for="cust-last-name">Last Name</label>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" id="cust-first-name" required>
+                                    <input class="mdl-textfield__input" type="text" id="cust-first-name" data-required>
                                     <label class="mdl-textfield__label" for="cust-first-name">First Name</label>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" id="cust-addr" required>
+                                    <input class="mdl-textfield__input" type="text" id="cust-addr" data-required>
                                     <label class="mdl-textfield__label" for="cust-addr">Address</label>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" id="cust-city" required>
+                                    <input class="mdl-textfield__input" type="text" id="cust-city" data-required>
                                     <label class="mdl-textfield__label" for="cust-city">City</label>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="tel" id="cust-phone" required>
+                                    <input class="mdl-textfield__input" type="tel" id="cust-phone" data-required>
                                     <label class="mdl-textfield__label" for="cust-phone">Phone #</label>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -67,7 +67,7 @@
                                     <label class="mdl-textfield__label" for="cust-email">E-mail</label>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <textarea class="mdl-textfield__input" type="text" rows="3" id="job-claim-num" required></textarea>
+                                    <textarea class="mdl-textfield__input" type="text" rows="3" id="job-claim-num" data-required></textarea>
                                     <label class="mdl-textfield__label" for="job-claim-num">
                                         Claim #
                                     </label>
@@ -77,10 +77,10 @@
                                 </div>
                                 <div class="dropdown">
                                     <span>Is split?</span>
-                                    <select id="job-split-type" required></select>
+                                    <select id="job-split-type" data-required></select>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <textarea class="mdl-textfield__input" type="text" rows="3" id="job-scope" required></textarea>
+                                    <textarea class="mdl-textfield__input" type="text" rows="3" id="job-scope" data-required></textarea>
                                     <label class="mdl-textfield__label" for="job-scope">
                                         Scope description
                                     </label>
@@ -96,11 +96,11 @@
                                 </div>
                                 <div class="dropdown">
                                     <span>Status</span>
-                                    <select id="job-claim-status" required></select>
+                                    <select id="job-claim-status" data-required></select>
                                 </div>
                                 <br>
                                 <br>
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="add-job-bttn" type="submit" onclick="addJob()">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="add-job-bttn" type="submit">
                                     Save
                                 </button>
                             </form>
@@ -122,7 +122,7 @@
                                 <span for="tt1" class="mdl-tooltip">Record a transaction which is not expense/income. e.g. paying for your credit card bills (saving account -> credit card), withdrawing cash (checkings account -> cash), or making an investment.</span>
 
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" id="transfer-description" required>
+                                    <input class="mdl-textfield__input" type="text" id="transfer-description" data-required>
                                     <label class="mdl-textfield__label" for="transfer-description">Description</label>
                                 </div>
                                 <br>

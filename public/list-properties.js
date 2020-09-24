@@ -91,13 +91,7 @@
         });
         
 
-        // In MDL - `required` input fields are invalid on page load by default (which looks bad).
-        // Fix: https://github.com/google/material-design-lite/issues/1502#issuecomment-257405822
-        document
-        .querySelectorAll("*[data-required]")
-        .forEach(e => (e.required = true));
-
-        // set lister for button
+        // set lister for buttons
         oGetPropertiesBttn.onclick = getProperties.bind(null);
     }
 

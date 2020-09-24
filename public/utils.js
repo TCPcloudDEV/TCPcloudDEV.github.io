@@ -101,10 +101,17 @@
     }
 
 
-    function showError(errMsg) {
-        console.error("Error: " + errMsg);
+    function showMsg(ctnr, msg) {
+        ctnr.MaterialSnackbar.showSnackbar({
+            message: msg
+        });
+    }
 
-        alert("Error\n\n   " + errMsg);
+
+    function showError(msg) {
+        console.error(" -E- " + msg);
+
+        alert("Error\n\n   " + msg);
     }
 
 
@@ -118,6 +125,7 @@
         batchGetRequestObj,
         getRequestObj,
         appendRequestObj,
+        showMsg,
         showError
     };
 })();
