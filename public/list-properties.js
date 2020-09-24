@@ -33,60 +33,62 @@
             .get(
                 parms
             )
-            .then(response => {
-                console.log(response.result);
+            .then(
+                response => {
+                    console.log(response.result);
 
-                let data = "";
-                var aProps = response.result.values;
-                aProps.forEach(row => data += row[1] + ", " + row[2] + " " + row[3] + ", "+ row[4] + "<br/>c: " + row[5] + "&emsp; e: " + row[6] + "<br/><br/>");
+                    let data = "";
+                    var aProps = response.result.values;
+                    aProps.forEach(row => data += row[1] + ", " + row[2] + " " + row[3] + ", "+ row[4] + "<br/>c: " + row[5] + "&emsp; e: " + row[6] + "<br/><br/>");
 
-                //oDivProperties.innerHTML = data;
+                    //oDivProperties.innerHTML = data;
 
-                //var tableRef2 = document.getElementById('myTable').getElementsByTagName('tbody')[0];
-                var tableRef = getElmById("tblPropertiesBody");
+                    //var tableRef2 = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+                    var tableRef = getElmById("tblPropertiesBody");
 
-                aProps.forEach(function (aPropInfo) {
-                    var row = tableRef.insertRow();
+                    aProps.forEach(function (aPropInfo) {
+                        var row = tableRef.insertRow();
 
-                    var clm0 = row.insertCell(0);
-                    clm0.appendChild(document.createTextNode(aPropInfo[0].split(" ")[0]));
+                        var clm0 = row.insertCell(0);
+                        clm0.appendChild(document.createTextNode(aPropInfo[0].split(" ")[0]));
 
-                    var clm1 = row.insertCell(1);
-                    clm1.appendChild(document.createTextNode(aPropInfo[3] + ", " + aPropInfo[4]));
+                        var clm1 = row.insertCell(1);
+                        clm1.appendChild(document.createTextNode(aPropInfo[3] + ", " + aPropInfo[4]));
 
-                    var clm2 = row.insertCell(2);
-                    clm2.appendChild(document.createTextNode(aPropInfo[1] + ", " + aPropInfo[2]));
+                        var clm2 = row.insertCell(2);
+                        clm2.appendChild(document.createTextNode(aPropInfo[1] + ", " + aPropInfo[2]));
 
-                    var clm3 = row.insertCell(3);
-                    var node3 = document.createElement("a");
-                    node3.href = "tel:" + aPropInfo[5];
-                    node3.text = aPropInfo[5];
-                    clm3.appendChild(node3);
+                        var clm3 = row.insertCell(3);
+                        var node3 = document.createElement("a");
+                        node3.href = "tel:" + aPropInfo[5];
+                        node3.text = aPropInfo[5];
+                        clm3.appendChild(node3);
 
-                    var clm4 = row.insertCell(4);
-                    if (!CSupport.isEmpty(aPropInfo[6])) {
-                        var node4 = document.createElement("a");
-                        node4.href = "mailto:" + aPropInfo[6];
-                        node4.text = aPropInfo[6];
-                        clm4.appendChild(node4);
+                        var clm4 = row.insertCell(4);
+                        if (!CSupport.isEmpty(aPropInfo[6])) {
+                            var node4 = document.createElement("a");
+                            node4.href = "mailto:" + aPropInfo[6];
+                            node4.text = aPropInfo[6];
+                            clm4.appendChild(node4);
+                        }
+                    });
+
+                    utils.showMsg(oSnackbar, "Data retrived");
+                    utils.hideLoader();
+                },
+                response => {
+                    utils.hideLoader();
+
+                    let message = cWARN_0001 + " " + response.result.error.message;
+                    if (response.status === 403) {
+                        message = cINFO_0001;
                     }
-                });
 
-                utils.showMsg(oSnackbar, "Data retrived");
-                utils.hideLoader();
-            },
-            response => {
-                utils.hideLoader();
+                    console.log(response);
 
-                let message = cWARN_0001 + " " + response.result.error.message;
-                if (response.status === 403) {
-                    message = cINFO_0001;
+                    utils.showWarnWithDtls(oSnackbar, message);
                 }
-
-                console.log(response);
-
-                utils.showWarnWithDtls(oSnackbar, message);
-            });
+            );
 
         // set lister for buttons
         //oGetPropertiesBttn.onclick = getProperties.bind(null);
