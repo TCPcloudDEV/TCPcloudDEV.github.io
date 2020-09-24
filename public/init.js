@@ -1,4 +1,4 @@
-const verId = "0.71";
+const verId = "0.72";
 
 
 (function () {

@@ -113,10 +113,7 @@ function addJob() {
 
         console.error(msg);
 
-        oSnackbar.MaterialSnackbar.showSnackbar({
-            message: msg,
-            timeout: 30 * 1000
-        });
+        alert(msg);
     }
 }
 
