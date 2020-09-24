@@ -1,8 +1,28 @@
-const verId = "0.27";
+const verId = "0.28";
 const cECS_URL = "https://www.estateclaimservices.com/contact.html";
 
 
 (function () {
+    const CSupport = window.CSupport;
+    var ddd;
+
+    if (CSupport.isEmpty(ddd))
+        alert("#1 " + ddd);
+
+    ddd = "";
+    if (CSupport.isEmpty(ddd))
+        alert("#2 " + ddd);
+
+    ddd = null;
+    if (CSupport.isEmpty(ddd))
+        alert("#3 " + ddd);
+
+    ddd = "sssssss";
+    if (!CSupport.isEmpty(ddd))
+        alert("#4 " + ddd);
+
+    alert("test done");
+
     const utils = window.ECSSales.utils;
     const getElmById = document.getElementById.bind(document);
 
@@ -164,12 +184,6 @@ const cECS_URL = "https://www.estateclaimservices.com/contact.html";
 
         utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
         utils.getRequestObj = utils.getRequestObj.bind(null, data.sheetID)
-
-        // In MDL - `required` input fields are invalid on page load by default (which looks bad).
-        // Fix: https://github.com/google/material-design-lite/issues/1502#issuecomment-257405822
-        document
-            .querySelectorAll("*[data-required]")
-            .forEach(e => (e.required = true));
     }
 
 

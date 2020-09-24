@@ -90,13 +90,20 @@
         });
 
 
-        var request2 = gapi.client.sheets.spreadsheets.values.get(utils.getRequestObj("Pipeline!A3:G"));
+        var rrr = utils.getRequestObj("Pipeline!A3:G");
+        var request2 = gapi.client.sheets.spreadsheets.values.get(rrr);
 
         request2.then(function (response) {
             console.log(response.result);
         }, function (reason) {
             console.error('error: ' + reason.result.error.message);
         });
+
+        // In MDL - `required` input fields are invalid on page load by default (which looks bad).
+        // Fix: https://github.com/google/material-design-lite/issues/1502#issuecomment-257405822
+        document
+            .querySelectorAll("*[data-required]")
+            .forEach(e => (e.required = true));
 
         // set lister for buttons
         oGetPropertiesBttn.onclick = getProperties.bind(null);
