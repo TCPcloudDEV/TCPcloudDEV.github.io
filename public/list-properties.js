@@ -22,7 +22,7 @@
 
 
     function init(sheetID) {
-        var parms = utils.getRequestObj(sheetID, "Pipeline2!A3:G"); // !!!!!
+        var parms = utils.getRequestObj(sheetID, "Pipeline!A3:G");
 
         gapi.client.sheets.spreadsheets.values
             .get(
