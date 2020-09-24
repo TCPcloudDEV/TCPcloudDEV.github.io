@@ -1,4 +1,6 @@
-(function() {
+(function () {
+    const CSupport = window.CSupport;
+
     function hideElm(oElm) {
         oElm.style.display = "none";
     }
@@ -111,7 +113,7 @@
     function showWarnWithDtls(oCtnr, msg, urlDtls) {
         console.error(" -W- " + msg);
 
-        if (urlDtls == undefined)
+        if (CSupport.isEmpty(urlDtls))
             urlDtls = cECS_URL;
 
         oCtnr.MaterialSnackbar.showSnackbar({
@@ -154,7 +156,7 @@
 
 (function () {
     // #####
-    // ## Class::CSupportBase::isEmpty (val)
+    // ## Class::CSupport::isEmpty (val)
     // ## return: true || false;
     function isEmpty(val) {
         if (typeof (val) == "object" && val != null) return false;

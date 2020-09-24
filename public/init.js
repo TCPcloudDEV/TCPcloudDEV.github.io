@@ -1,28 +1,8 @@
-const verId = "0.28";
+const verId = "0.29";
 const cECS_URL = "https://www.estateclaimservices.com/contact.html";
 
 
 (function () {
-    const CSupport = window.CSupport;
-    var ddd;
-
-    if (CSupport.isEmpty(ddd))
-        alert("#1 " + ddd);
-
-    ddd = "";
-    if (CSupport.isEmpty(ddd))
-        alert("#2 " + ddd);
-
-    ddd = null;
-    if (CSupport.isEmpty(ddd))
-        alert("#3 " + ddd);
-
-    ddd = "sssssss";
-    if (!CSupport.isEmpty(ddd))
-        alert("#4 " + ddd);
-
-    alert("test done");
-
     const utils = window.ECSSales.utils;
     const getElmById = document.getElementById.bind(document);
 
