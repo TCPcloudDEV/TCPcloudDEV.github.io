@@ -82,12 +82,12 @@
         };
 
 
-        var request = gapi.client.sheets.spreadsheets.values.get(parms);
+        /*var request = gapi.client.sheets.spreadsheets.values.get(parms);
         request.then(function (response) {
             console.log(response.result);
         }, function (reason) {
             console.error('error: ' + reason.result.error.message);
-        });
+        });*/
 
 
         var rrr = utils.getRequestObj(sheetID, "Pipeline!A3:G");
