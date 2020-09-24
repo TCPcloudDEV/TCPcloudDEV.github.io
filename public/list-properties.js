@@ -14,51 +14,7 @@
         utils.showLoader();
 
         try {
-            var request2 = gapi.client.sheets.spreadsheets.values.get(utils.getRequestObj("Pipeline!A3:G"));
-
-            request2.then(function (response) {
-                console.log(response.result);
-                var rrr = response.result;
-            }, function (reason) {
-                console.error('error: ' + reason.result.error.message);
-            });
-
-
-            /*gapi.client.sheets.spreadsheets.values
-                .get(
-                    utils.getRequestObj("Pipeline!A3:G")
-                )
-                .then(response => {
-                        var rrr = response.result;
-
-                        /*oSnackbar.MaterialSnackbar.showSnackbar({
-                            message: "Expense added!"
-                        });*
-
-                        utils.hideLoader();
-                    },
-                    response => {
-                        utils.hideLoader();
-
-                        let message = "Sorry, something went wrong";
-                        if (response.status === 403) {
-                            message = "Please copy the sheet in your drive";
-                        }
-
-                        console.log(response);
-                        oSnackbar.MaterialSnackbar.showSnackbar({
-                            message,
-                            actionHandler: () => {
-                                window.open(
-                                    "https://www.estateclaimservices.com/contact.html",
-                                    "_blank"
-                                );
-                            },
-                            actionText: "Details",
-                            timeout: 5 * 60 * 1000
-                        });
-                    }
-                );*/
+            console.log("hre");
         } catch (err) {
             console.error(err);
         }
@@ -66,38 +22,38 @@
 
 
     function init(sheetID) {
-        const parms = {
-            spreadsheetId: sheetID,
-            range: "Pipeline!A3:G",
-
-            // How values should be represented in the output.
-            // The default render option is ValueRenderOption.FORMATTED_VALUE.
-            valueRenderOption: "FORMATTED_VALUE",
-
-            // How dates, times, and durations should be represented in the output.
-            // This is ignored if value_render_option is
-            // FORMATTED_VALUE.
-            // The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
-            dateTimeRenderOption: "FORMATTED_STRING",
-        };
-
-
-        /*var request = gapi.client.sheets.spreadsheets.values.get(parms);
-        request.then(function (response) {
-            console.log(response.result);
-        }, function (reason) {
-            console.error('error: ' + reason.result.error.message);
-        });*/
-
-
-        var rrr = utils.getRequestObj(sheetID, "Pipeline!A3:G");
-        var request2 = gapi.client.sheets.spreadsheets.values.get(rrr);
+        var parms = utils.getRequestObj(sheetID, "Pipeline2!A3:G");
+        var request2 = gapi.client.sheets.spreadsheets.values.get(parms);
 
         request2.then(function (response) {
             console.log(response.result);
         }, function (reason) {
             console.error('error: ' + reason.result.error.message);
         });
+
+        gapi.client.sheets.spreadsheets.values
+            .get(
+                parms
+            )
+            .then(response => {
+                    var rrr = response.result;
+
+                    utils.showMsg("Data retrived");
+                    utils.hideLoader();
+                },
+                response => {
+                    utils.hideLoader();
+
+                    let message = "Sorry, something went wrong";
+                    if (response.status === 403) {
+                        message = "Please copy the sheet in your drive";
+                    }
+
+                    console.log(response);
+
+                    utils.showWarnWithDtls(oSnackbar, message, "google.com");
+                }
+            );
 
         // In MDL - `required` input fields are invalid on page load by default (which looks bad).
         // Fix: https://github.com/google/material-design-lite/issues/1502#issuecomment-257405822
