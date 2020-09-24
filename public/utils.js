@@ -101,6 +101,13 @@
     }
 
 
+    function showError(errMsg) {
+        console.error("Error: " + errMsg;);
+
+        alert("Error\n\n" + errMsg);
+    }
+
+
     window.ECSSales = window.ECSSales || {};
     window.ECSSales.utils = window.ECSSales.utils || {
         showElm,
@@ -110,6 +117,7 @@
         wrapInOption,
         batchGetRequestObj,
         getRequestObj,
-        appendRequestObj
+        appendRequestObj,
+        showError
     };
 })();
