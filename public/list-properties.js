@@ -64,7 +64,7 @@
                     clm3.appendChild(node3);
 
                     var clm4 = row.insertCell(4);
-                    clm4.appendChild(document.createTextNode("<a href='mailto:" + aPropInfo[6] + "'>" + aPropInfo[6] + "</a>"));
+                    var node4 = document.createElement("a");
                     node4.href = "mailto:" + aPropInfo[6];
                     node4.text = aPropInfo[6];
                     clm4.appendChild(node4);
