@@ -58,12 +58,16 @@
                     clm2.appendChild(document.createTextNode(aPropInfo[1] + ", " + aPropInfo[2]));
 
                     var clm3 = row.insertCell(3);
-                    var node3 = document.createTextNode("");
-                    node3.innerHTML = "<a href='tel:" + aPropInfo[5] + "'>" + aPropInfo[5] + "</a>";
+                    var node3 = document.createElement("a");
+                    node3.href = "tel:" + aPropInfo[5];
+                    node3.text = aPropInfo[5];
                     clm3.appendChild(node3);
 
                     var clm4 = row.insertCell(4);
                     clm4.appendChild(document.createTextNode("<a href='mailto:" + aPropInfo[6] + "'>" + aPropInfo[6] + "</a>"));
+                    node4.href = "mailto:" + aPropInfo[6];
+                    node4.text = aPropInfo[6];
+                    clm4.appendChild(node4);
                 });
 
                 utils.showMsg(oSnackbar, "Data retrived");
