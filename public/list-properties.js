@@ -16,11 +16,11 @@
         try {
             var request2 = gapi.client.sheets.spreadsheets.values.get(utils.getRequestObj("Pipeline!A3:G"));
 
-            request2.then(function (response2) {
-                console.log(response2.result);
-                var rrr = response2.result;
-            }, function (reason2) {
-                console.error('error: ' + reason2.result.error.message);
+            request2.then(function (response) {
+                console.log(response.result);
+                var rrr = response.result;
+            }, function (reason) {
+                console.error('error: ' + reason.result.error.message);
             });
 
 
@@ -83,8 +83,16 @@
 
 
         var request = gapi.client.sheets.spreadsheets.values.get(parms);
-
         request.then(function (response) {
+            console.log(response.result);
+        }, function (reason) {
+            console.error('error: ' + reason.result.error.message);
+        });
+
+
+        var request2 = gapi.client.sheets.spreadsheets.values.get(utils.getRequestObj("Pipeline!A3:G"));
+
+        request2.then(function (response) {
             console.log(response.result);
         }, function (reason) {
             console.error('error: ' + reason.result.error.message);

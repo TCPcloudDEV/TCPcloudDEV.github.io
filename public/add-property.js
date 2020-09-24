@@ -82,8 +82,7 @@ function addJob() {
                     oJobNotes.value = "";
                     oClaimStatus.value = "";
 
-                    //utils.showMsg(oSnackbar, "Property added.");
-                    utils.showWarnWithDtls(oSnackbar, "Property added.");
+                    utils.showMsg(oSnackbar, "Property added.");
                     utils.hideLoader();
                 },
                 response => {

@@ -1,4 +1,4 @@
-const verId = "0.26";
+const verId = "0.27";
 const cECS_URL = "https://www.estateclaimservices.com/contact.html";
 
 
