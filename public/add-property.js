@@ -70,7 +70,7 @@ function addJob() {
             .then(
                 response => {
                     // reset fileds
-                    oCustLastName.value = "";
+                    /*oCustLastName.value = "";
                     oCustFirstName.value = "";
                     oCustAddr.value = "";
                     oCustCity.value = "";
@@ -80,10 +80,10 @@ function addJob() {
                     oJobSplitType.value = "";
                     oJobScope.value = "";
                     oJobNotes.value = "";
-                    oClaimStatus.value = "";
+                    oClaimStatus.value = "";*/
 
                     utils.showMsg(oSnackbar, "Property added.");
-                    utils.hideLoader();
+                    //utils.hideLoader();
                 },
                 response => {
                     utils.hideLoader();
