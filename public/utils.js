@@ -101,9 +101,29 @@
     }
 
 
-    function showMsg(ctnr, msg) {
-        ctnr.MaterialSnackbar.showSnackbar({
+    function showMsg(oCtnr, msg) {
+        oCtnr.MaterialSnackbar.showSnackbar({
             message: msg
+        });
+    }
+
+
+    function showWarnWithDtls(oCtnr, msg, urlDtls) {
+        console.error(" -W- " + msg);
+
+        if (urlDtls == undefined)
+            urlDtls = cECS_URL;
+
+        oCtnr.MaterialSnackbar.showSnackbar({
+            message: msg,
+            actionHandler: () => {
+                window.open(
+                    urlDtls,
+                    "_blank"
+                );
+            },
+            actionText: "Details",
+            timeout: 5 * 60 * 1000
         });
     }
 
@@ -126,6 +146,7 @@
         getRequestObj,
         appendRequestObj,
         showMsg,
+        showWarnWithDtls,
         showError
     };
 })();

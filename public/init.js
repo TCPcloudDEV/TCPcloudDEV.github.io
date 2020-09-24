@@ -1,4 +1,5 @@
-const verId = "0.23";
+const verId = "0.25";
+const cECS_URL = "https://www.estateclaimservices.com/contact.html";
 
 
 (function () {
@@ -6,7 +7,7 @@ const verId = "0.23";
     const getElmById = document.getElementById.bind(document);
 
 
-    const cSHEET_NAME = "ECS_Sales (Responses)_WIP"; // TODO ECS:
+    const cSHEET_NAME = "ECS_Sales (Responses)_WIPP"; // TODO ECS:
     const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
     const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
 
@@ -109,17 +110,7 @@ const verId = "0.23";
             .then(initApp);
 
         function sheetNotFound() {
-            oSnackbar.MaterialSnackbar.showSnackbar({
-                message: "Cannot find the sheet!",
-                actionHandler: () => {
-                    window.open(
-                    "https://www.estateclaimservices.com/contact.html",
-                    "_blank"
-                    );
-                },
-                actionText: "Details",
-                timeout: 5 * 60 * 1000
-            });
+            utils.showWarnWithDtls(oSnackbar, "Cannot find the sheet!");
         }
     }
 
@@ -173,6 +164,12 @@ const verId = "0.23";
 
         utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
         utils.getRequestObj = utils.getRequestObj.bind(null, data.sheetID)
+
+        // In MDL - `required` input fields are invalid on page load by default (which looks bad).
+        // Fix: https://github.com/google/material-design-lite/issues/1502#issuecomment-257405822
+        document
+            .querySelectorAll("*[data-required]")
+            .forEach(e => (e.required = true));
     }
 
 
