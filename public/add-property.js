@@ -22,7 +22,7 @@ var oCamStrm;
     const oSnackbar = getElmById("toast-container");
 
 
-    function addJob() {
+    function addJob(event) {
         try {
             if (!oAddPropertyForm.checkValidity()) return false;
 
