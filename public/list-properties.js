@@ -33,7 +33,7 @@
 
                 let data = "";
                 var aProps = response.result.values;
-                aProps.forEach(row => data += row[1] + ", " + row[2] + " " + row[3] + ", "row[4] + "<br/>c: " + row[5] + "&emsp; e: " + row[6] + "<br/><br/>");
+                aProps.forEach(row => data += row[1] + ", " + row[2] + " " + row[3] + ", "+ row[4] + "<br/>c: " + row[5] + "&emsp; e: " + row[6] + "<br/><br/>");
 
                 oTblProperties.innerHTML = data;
 
