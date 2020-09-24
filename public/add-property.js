@@ -115,7 +115,7 @@ function addJob() {
 
         oSnackbar.MaterialSnackbar.showSnackbar({
             message: msg,
-            actionText: "Error"
+            timeout: 30 * 1000
         });
     }
 }
