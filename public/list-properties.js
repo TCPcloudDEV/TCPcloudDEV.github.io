@@ -28,7 +28,7 @@
             .querySelectorAll("*[data-required]")
             .forEach(e => (e.required = true));
 
-        var parms = utils.getRequestObj(sheetID, "Pipeline!A3:G");
+        var parms = utils.getRequestObj(sheetID, "Pipeline!A3");
         gapi.client.sheets.spreadsheets.values
             .get(
                 parms
@@ -37,14 +37,10 @@
                 response => {
                     console.log(response.result);
 
-                    let data = "";
                     var aProps = response.result.values;
-                    aProps.forEach(row => data += row[1] + ", " + row[2] + " " + row[3] + ", "+ row[4] + "<br/>c: " + row[5] + "&emsp; e: " + row[6] + "<br/><br/>");
-
-                    //oDivProperties.innerHTML = data;
-
-                    //var tableRef2 = document.getElementById('myTable').getElementsByTagName('tbody')[0];
                     var tableRef = getElmById("tblPropertiesBody");
+
+                    tableRef.innerHTML = "";
 
                     aProps.forEach(function (aPropInfo) {
                         var row = tableRef.insertRow();
