@@ -8,7 +8,8 @@ var urlsToCache = [
     "add-property.js",
     "list-properties.js",
     "vendor/mdl/material.min.js", // https://getmdl.io/components/index.html
-    "vendor/mdl/material.min.css"
+    "vendor/mdl/material.min.css",
+    "vendor/sorttable/sort-table.min.js"
 ];
 
 

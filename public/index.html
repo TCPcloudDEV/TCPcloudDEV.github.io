@@ -121,10 +121,10 @@
                             <form id="list-properties-form">
                                 <div id="tblProperties">
                                 </div>
-                                <table id="tblProperties" class="sortable">
+                                <table id="tblProperties" class="js-sort-table">
                                     <thead>
                                         <tr>
-                                            <th>Date</th>
+                                            <th class="js-sort-date">Date</th>
                                             <th>Address</th>
                                             <th>Name</th>
                                             <th>phone</th>
@@ -157,8 +157,9 @@
     <script type="text/javascript" src="init.js"></script>
     <script type="text/javascript" src="register-serviceworker.js"></script>
 
-    <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()">
-    </script>
+    <script type="text/javascript" src="vendor/sorttable/sort-table.js"></script>
+
+    <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
 </body>
 
 </html>
