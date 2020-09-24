@@ -104,7 +104,7 @@
     function showError(errMsg) {
         console.error("Error: " + errMsg);
 
-        alert("Error\n\n\t" + errMsg);
+        alert("Error\n\n   " + errMsg);
     }
 
 
