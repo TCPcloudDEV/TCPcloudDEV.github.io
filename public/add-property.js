@@ -82,7 +82,8 @@ function addJob() {
                     oJobNotes.value = "";
                     oClaimStatus.value = "";
 
-                    utils.showMsg(oSnackbar, "Property added.");
+                    //utils.showMsg(oSnackbar, "Property added.");
+                    utils.showWarnWithDtls(oSnackbar, "Property added.");
                     utils.hideLoader();
                 },
                 response => {
@@ -94,18 +95,9 @@ function addJob() {
                     }
 
                     console.log(response);
-                    oSnackbar.MaterialSnackbar.showSnackbar({
-                        message,
-                        actionHandler: () => {
-                            window.open(
-                                "https://www.estateclaimservices.com/contact.html",
-                                "_blank"
-                            );
-                        },
-                        actionText: "Details",
-                        timeout: 5 * 60 * 1000
-                    });
-                }
+
+                    utils.showWarnWithDtls(oSnackbar, message);
+                 }
             );
     } catch (err) {
         utils.showError(err.message);

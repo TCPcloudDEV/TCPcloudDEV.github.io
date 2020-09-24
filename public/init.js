@@ -1,4 +1,4 @@
-const verId = "0.25";
+const verId = "0.26";
 const cECS_URL = "https://www.estateclaimservices.com/contact.html";
 
 
@@ -7,7 +7,7 @@ const cECS_URL = "https://www.estateclaimservices.com/contact.html";
     const getElmById = document.getElementById.bind(document);
 
 
-    const cSHEET_NAME = "ECS_Sales (Responses)_WIPP"; // TODO ECS:
+    const cSHEET_NAME = "ECS_Sales (Responses)_WIP"; // TODO ECS:
     const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
     const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
 
