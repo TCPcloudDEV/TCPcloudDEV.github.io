@@ -40,7 +40,7 @@
                     var aProps = response.result.values;
                     var tableRef = getElmById("tblPropertiesBody");
 
-                    for (var rowIndx in tableRef.rows.item.length)
+                    for (var row in tableRef.rows)
                         tableRef.deleteRow(-1);
 
                     aProps.forEach(function (aPropInfo) {
