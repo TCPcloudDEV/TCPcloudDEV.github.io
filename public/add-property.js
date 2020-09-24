@@ -109,7 +109,7 @@ function addJob() {
                 }
             );
     } catch (err) {
-        window.utils.showError(err.message);
+        utils.showError(err.message);
     }
 }
 
