@@ -42,7 +42,7 @@
 
                 //oDivProperties.innerHTML = data;
 
-                var tableRef2 = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+                //var tableRef2 = document.getElementById('myTable').getElementsByTagName('tbody')[0];
                 var tableRef = getElmById("tblPropertiesBody");
 
                 aProps.forEach(function (aPropInfo) {
