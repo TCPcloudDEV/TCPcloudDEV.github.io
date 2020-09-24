@@ -1,4 +1,4 @@
-const verId = "0.30";
+const verId = "0.31";
 const cECS_URL = "https://www.estateclaimservices.com/contact.html";
 
 
@@ -163,7 +163,6 @@ const cECS_URL = "https://www.estateclaimservices.com/contact.html";
         window.ECSSales.ListPropertiesForm.init(data.sheetID);
 
         utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
-        utils.getRequestObj = utils.getRequestObj.bind(null, data.sheetID)
     }
 
 

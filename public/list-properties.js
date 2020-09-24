@@ -90,7 +90,7 @@
         });
 
 
-        var rrr = utils.getRequestObj(["Pipeline!A3:G"]);
+        var rrr = utils.getRequestObj(sheetID, "Pipeline!A3:G");
         var request2 = gapi.client.sheets.spreadsheets.values.get(rrr);
 
         request2.then(function (response) {
