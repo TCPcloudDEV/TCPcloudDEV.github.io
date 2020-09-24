@@ -102,7 +102,7 @@
 
 
     function showError(errMsg) {
-        console.error("Error: " + errMsg;);
+        console.error("Error: " + errMsg);
 
         alert("Error\n\n" + errMsg);
     }
