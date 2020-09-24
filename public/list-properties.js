@@ -22,7 +22,7 @@
 
 
     function init(sheetID) {
-        var parms = utils.getRequestObj(sheetID, "Pipeline2!A3:G"); // !!!!!!!
+        var parms = utils.getRequestObj(sheetID, "Pipeline2!A3:G"); // !!!!!
 
         gapi.client.sheets.spreadsheets.values
             .get(
@@ -39,14 +39,14 @@
                 response => {
                     utils.hideLoader();
 
-                    let message = "Something went wrong. " + response.result.error.message;
+                    let message = cWARN_0001 + " " + response.result.error.message;
                     if (response.status === 403) {
-                        message = "Please copy the sheet in your drive";
+                        message = cINFO_0001;
                     }
 
                     console.log(response);
 
-                    utils.showWarnWithDtls(oSnackbar, message, "http://google.com");
+                    utils.showWarnWithDtls(oSnackbar, message);
                 }
             );
 

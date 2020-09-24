@@ -88,9 +88,9 @@ function addJob() {
                 response => {
                     utils.hideLoader();
 
-                    let message = "Sorry, something went wrong";
+                    let message = cWARN_0001 +" "+ response.result.error.message;
                     if (response.status === 403) {
-                        message = "Please copy the sheet in your drive";
+                        message = cINFO_0001;
                     }
 
                     console.log(response);

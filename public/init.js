@@ -1,6 +1,12 @@
 const verId = "0.36";
 const cECS_URL = "https://www.estateclaimservices.com/contact.html";
 
+//const cERROR_0001
+
+const cWARN_0001 = "Something went wrong.";
+
+const cINFO_0001 = "The required spreadsheet is missing.";
+
 
 (function () {
     const utils = window.ECSSales.utils;
