@@ -39,14 +39,14 @@
                 response => {
                     utils.hideLoader();
 
-                    let message = "Sorry, something went wrong. " + response.result.error.message;
+                    let message = "Something went wrong. " + response.result.error.message;
                     if (response.status === 403) {
                         message = "Please copy the sheet in your drive";
                     }
 
                     console.log(response);
 
-                    utils.showWarnWithDtls(oSnackbar, message, "google.com");
+                    utils.showWarnWithDtls(oSnackbar, message, "http://google.com");
                 }
             );
 
