@@ -39,7 +39,7 @@
                 response => {
                     utils.hideLoader();
 
-                    let message = "Sorry, something went wrong";
+                    let message = "Sorry, something went wrong. " + response.result.error.message;
                     if (response.status === 403) {
                         message = "Please copy the sheet in your drive";
                     }

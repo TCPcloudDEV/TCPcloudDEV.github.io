@@ -20,7 +20,7 @@
 
 
 (function () {
-    const CSupport = window.CSupport;
+    const CSupport = window.CSupport; // CSupport should be defined before declaring variable
 
     function hideElm(oElm) {
         oElm.style.display = "none";
