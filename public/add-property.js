@@ -1,100 +1,26 @@
+const utils = window.ECSSales.utils;
+
+const getElmById = document.getElementById.bind(document);
+const oAddPropertyForm = getElmById("add-property-form");
+const oCustLastName = getElmById("cust-last-name");
+const oCustFirstName = getElmById("cust-first-name");
+const oCustAddr = getElmById("cust-addr");
+const oCustCity = getElmById("cust-city");
+const oCustPhone = getElmById("cust-phone");
+const oCustEmail = getElmById("cust-email");
+const oCustClaimNum = getElmById("job-claim-num");
+const oJobSplitType = getElmById("job-split-type");
+const oJobScope = getElmById("job-scope");
+const oJobNotes = getElmById("job-notes");
+const oClaimStatus = getElmById("job-claim-status");
+
+const oAddJobBttn = getElmById("add-job-bttn");
+const oSnackbar = getElmById("toast-container");
+
 var oCamStrm;
 
 
 (function () {
-    const utils = window.ECSSales.utils;
-
-    const getElmById = document.getElementById.bind(document);
-    const oAddPropertyForm = getElmById("add-property-form");
-    const oCustLastName = getElmById("cust-last-name");
-    const oCustFirstName = getElmById("cust-first-name");
-    const oCustAddr = getElmById("cust-addr");
-    const oCustCity = getElmById("cust-city");
-    const oCustPhone = getElmById("cust-phone");
-    const oCustEmail = getElmById("cust-email");
-    const oCustClaimNum = getElmById("job-claim-num");
-    const oJobSplitType = getElmById("job-split-type");
-    const oJobScope = getElmById("job-scope");
-    const oJobNotes = getElmById("job-notes");
-    const oClaimStatus = getElmById("job-claim-status");
-
-    const oAddJobBttn = getElmById("add-job-bttn");
-    const oSnackbar = getElmById("toast-container");
-
-
-    function addJob(event) {
-        try {
-            if (!oAddPropertyForm.checkValidity()) return false;
-
-            utils.showLoader();
-
-            var now = new Date();
-
-            gapi.client.sheets.spreadsheets.values
-                .append(
-                    utils.appendRequestObj([
-                        [
-                            `=DATE(${now.getFullYear()}, ${now.getMonth()}, ${now.getDate()}) + TIME(${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()})`,
-                            oCustLastName.value,
-                            oCustFirstName.value,
-                            oCustAddr.value,
-                            oCustCity.value,
-                            oCustPhone.value,
-                            oCustEmail.value,
-                            oCustClaimNum.value,
-                            oJobSplitType.value,
-                            oJobScope.value,
-                            oJobNotes.value,
-                            oClaimStatus.value
-                        ]
-                    ])
-                )
-                .then(
-                    response => {
-                        // reset fileds
-                        oCustLastName.value = "";
-                        oCustFirstName.value = "";
-                        oCustAddr.value = "";
-                        oCustCity.value = "";
-                        oCustPhone.value = "";
-                        oCustEmail.value = "";
-                        oCustClaimNum.value = "";
-                        oJobSplitType.value = "";
-                        oJobScope.value = "";
-                        oJobNotes.value = "";
-                        oClaimStatus.value = "";
-
-                        utils.showMsg(oSnackbar, "Property added.");
-                        utils.hideLoader();
-                    },
-                    response => {
-                        utils.hideLoader();
-
-                        let message = "Sorry, something went wrong";
-                        if (response.status === 403) {
-                            message = "Please copy the sheet in your drive";
-                        }
-
-                        console.log(response);
-                        oSnackbar.MaterialSnackbar.showSnackbar({
-                            message,
-                            actionHandler: () => {
-                                window.open(
-                                    "https://www.estateclaimservices.com/contact.html",
-                                    "_blank"
-                                );
-                            },
-                            actionText: "Details",
-                            timeout: 5 * 60 * 1000
-                        });
-                    }
-                );
-        } catch (err) {
-            utils.showError(err.message);
-        }
-    }
-
-
     function init(sheetID, jobSplitTypes, jobClaimStatuses) {
         // initialize dropdowns
         oJobSplitType.innerHTML = jobSplitTypes.map(utils.wrapInOption).join();
@@ -103,8 +29,7 @@ var oCamStrm;
         oJobSplitType.value = "";
         oClaimStatus.value = "";
 
-        // set lister for buttons
-        //oAddJobBttn.onclick = addJob.bind(null);
+        //oAddJobBttn.onclick = addJob.bind(null); -- setting this way blocks "Please fill out this field" notification, used onclick="addJob()" instead
     }
 
 
@@ -114,6 +39,78 @@ var oCamStrm;
 })();
 
 
+function addJob() {
+    try {
+        if (!oAddPropertyForm.checkValidity()) return false;
+
+        event.preventDefault();
+        utils.showLoader();
+
+        var now = new Date();
+
+        gapi.client.sheets.spreadsheets.values
+            .append(
+                utils.appendRequestObj([
+                    [
+                        `=DATE(${now.getFullYear()}, ${now.getMonth()}, ${now.getDate()}) + TIME(${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()})`,
+                        oCustLastName.value,
+                        oCustFirstName.value,
+                        oCustAddr.value,
+                        oCustCity.value,
+                        oCustPhone.value,
+                        oCustEmail.value,
+                        oCustClaimNum.value,
+                        oJobSplitType.value,
+                        oJobScope.value,
+                        oJobNotes.value,
+                        oClaimStatus.value
+                    ]
+                ])
+            )
+            .then(
+                response => {
+                    // reset fileds
+                    oCustLastName.value = "";
+                    oCustFirstName.value = "";
+                    oCustAddr.value = "";
+                    oCustCity.value = "";
+                    oCustPhone.value = "";
+                    oCustEmail.value = "";
+                    oCustClaimNum.value = "";
+                    oJobSplitType.value = "";
+                    oJobScope.value = "";
+                    oJobNotes.value = "";
+                    oClaimStatus.value = "";
+
+                    utils.showMsg(oSnackbar, "Property added.");
+                    utils.hideLoader();
+                },
+                response => {
+                    utils.hideLoader();
+
+                    let message = "Sorry, something went wrong";
+                    if (response.status === 403) {
+                        message = "Please copy the sheet in your drive";
+                    }
+
+                    console.log(response);
+                    oSnackbar.MaterialSnackbar.showSnackbar({
+                        message,
+                        actionHandler: () => {
+                            window.open(
+                                "https://www.estateclaimservices.com/contact.html",
+                                "_blank"
+                            );
+                        },
+                        actionText: "Details",
+                        timeout: 5 * 60 * 1000
+                    });
+                }
+            );
+    } catch (err) {
+        utils.showError(err.message);
+    }
+}
 
 
 function getUserMedia(options, successCallback, failureCallback) {
