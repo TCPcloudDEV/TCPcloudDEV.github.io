@@ -1,4 +1,25 @@
 (function () {
+    // #####
+    // ## Class::CSupport::isEmpty (val)
+    // ## return: true || false;
+    function isEmpty(val) {
+        if (typeof (val) == "object" && val != null) return false;
+
+        if (typeof (val) == "object" && val == undefined) return true;
+
+        if (val == "" || val == undefined || val == null) return true;
+
+        return false;
+    }
+
+
+    window.CSupport = window.CSupport || {
+        isEmpty
+    };
+})();
+
+
+(function () {
     const CSupport = window.CSupport;
 
     function hideElm(oElm) {
@@ -153,24 +174,4 @@
     };
 })();
 
-
-(function () {
-    // #####
-    // ## Class::CSupport::isEmpty (val)
-    // ## return: true || false;
-    function isEmpty(val) {
-        if (typeof (val) == "object" && val != null) return false;
-
-        if (typeof (val) == "object" && val == undefined) return true;
-
-        if (val == "" || val == undefined || val == null) return true;
-
-        return false;
-    }
-
-
-    window.CSupport = window.CSupport || {
-        isEmpty
-    };
-})();
 

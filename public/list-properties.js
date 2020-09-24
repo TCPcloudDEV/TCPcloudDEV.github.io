@@ -22,20 +22,15 @@
 
 
     function init(sheetID) {
-        var parms = utils.getRequestObj(sheetID, "Pipeline2!A3:G");
-        var request2 = gapi.client.sheets.spreadsheets.values.get(parms);
-
-        request2.then(function (response) {
-            console.log(response.result);
-        }, function (reason) {
-            console.error('error: ' + reason.result.error.message);
-        });
+        var parms = utils.getRequestObj(sheetID, "Pipeline2!A3:G"); // !!!!!!!
 
         gapi.client.sheets.spreadsheets.values
             .get(
                 parms
             )
             .then(response => {
+                    console.log(response.result);
+
                     var rrr = response.result;
 
                     utils.showMsg("Data retrived");
