@@ -28,7 +28,7 @@
             .querySelectorAll("*[data-required]")
             .forEach(e => (e.required = true));
 
-        var parms = utils.getRequestObj(sheetID, "Pipeline!A3");
+        var parms = utils.getRequestObj(sheetID, "Pipeline!A3:G");
         gapi.client.sheets.spreadsheets.values
             .get(
                 parms
