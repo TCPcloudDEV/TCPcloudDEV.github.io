@@ -83,7 +83,7 @@ function addJob() {
                     oClaimStatus.value = "";*/
 
                     utils.showMsg(oSnackbar, "Property added.");
-                    //utils.hideLoader();
+                    utils.hideLoader();
                 },
                 response => {
                     utils.hideLoader();
