@@ -88,10 +88,10 @@
     }
 
 
-    function getRequestObj (spreadsheetId, range) {
+    function getRequestObj (spreadsheetId, rangeVal) {
         return {
             spreadsheetId,
-            range,
+            range: rangeVal,
             dateTimeRenderOption: "FORMATTED_STRING",
             valueRenderOption: "FORMATTED_VALUE"
         };
