@@ -3,7 +3,7 @@
 
     const getElmById = document.getElementById.bind(document);
     const oListPropertiesForm = getElmById("list-properties-form");
-    const oGetPropertiesBttn = getElmById("get-properties-bttn");
+    const oTblProperties = getElmById("tblProperties");
 
     const oSnackbar = getElmById("toast-container");
 
@@ -29,26 +29,29 @@
                 parms
             )
             .then(response => {
-                    console.log(response.result);
+                console.log(response.result);
 
-                    var rrr = response.result;
+                let data = "";
+                var aProps = response.result.values;
+                aProps.forEach(row => data += row[1] + ", " + row[2] + " " + row[3] + ", "row[4] + "<br/>c: " + row[5] + "&emsp; e: " + row[6] + "<br/><br/>");
 
-                    utils.showMsg("Data retrived");
-                    utils.hideLoader();
-                },
-                response => {
-                    utils.hideLoader();
+                oTblProperties.innerHTML = data;
 
-                    let message = cWARN_0001 + " " + response.result.error.message;
-                    if (response.status === 403) {
-                        message = cINFO_0001;
-                    }
+                utils.showMsg(oSnackbar, "Data retrived");
+                utils.hideLoader();
+            },
+            response => {
+                utils.hideLoader();
 
-                    console.log(response);
-
-                    utils.showWarnWithDtls(oSnackbar, message);
+                let message = cWARN_0001 + " " + response.result.error.message;
+                if (response.status === 403) {
+                    message = cINFO_0001;
                 }
-            );
+
+                console.log(response);
+
+                utils.showWarnWithDtls(oSnackbar, message);
+            });
 
         // In MDL - `required` input fields are invalid on page load by default (which looks bad).
         // Fix: https://github.com/google/material-design-lite/issues/1502#issuecomment-257405822
