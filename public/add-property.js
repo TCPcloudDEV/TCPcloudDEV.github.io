@@ -18,7 +18,7 @@ const oAddJobBttn = getElmById("add-job-bttn");
 const oSnackbar = getElmById("toast-container");
 
 var oCamStrm;
-
+var gl_sheetId; // !!!
 
 (function () {
     function init(sheetID, jobSplitTypes, jobClaimStatuses) {
@@ -28,6 +28,8 @@ var oCamStrm;
 
         oJobSplitType.value = "";
         oClaimStatus.value = "";
+
+        gl_sheetId = sheetID;
 
         //oAddJobBttn.onclick = addJob.bind(null); -- setting this way blocks "Please fill out this field" notification, used onclick="addJob()" instead
     }
@@ -39,7 +41,7 @@ var oCamStrm;
 })();
 
 
-function addJob() {
+function addJob(event) {
     try {
         if (!oAddPropertyForm.checkValidity()) return false;
 
@@ -84,6 +86,8 @@ function addJob() {
 
                     utils.showMsg(oSnackbar, "Property added.");
                     utils.hideLoader();
+
+                    window.ECSSales.ListPropertiesForm.init(gl_sheetId);
                 },
                 response => {
                     utils.hideLoader();
