@@ -192,7 +192,7 @@ function savePhoto() {
         }
     });
 
-    var fileMetadata = {
+    /*var fileMetadata = {
         'name': 'photo.jpg'
     };
     var media = {
@@ -211,5 +211,5 @@ function savePhoto() {
         } else {
             console.log('File Id: ', file.id);
         }
-    });
+    });*/
 }
