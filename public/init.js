@@ -1,4 +1,4 @@
-const verId = "0.59";
+const verId = "0.60";
 const cECS_URL = "https://www.estateclaimservices.com/contact.html";
 
 //const cERROR_0001
@@ -66,7 +66,7 @@ const cINFO_0001 = "The required spreadsheet is missing.";
         ];
 
         // Write access for spreadsheet, readonly access for drive to find sheet ID
-        const SCOPES = "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly";
+        const SCOPES = "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.file"; //  https://www.googleapis.com/auth/drive.metadata.readonly
 
         gapi.client.setApiKey(API_KEY);
         
