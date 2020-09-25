@@ -172,7 +172,7 @@ function takePhoto() {
 
 
 function savePhoto() {
-    var parentId = '';//some parentId of a folder under which to create the new folder
+    var parentId = '0ByfGXtS3Wwvwb0s1UzlJTUMwVzQ';//some parentId of a folder under which to create the new folder
     var fileMetadata = {
         'name': 'New Folder',
         'mimeType': 'application/vnd.google-apps.folder',
