@@ -172,6 +172,26 @@ function takePhoto() {
 
 
 function savePhoto() {
+    var parentId = '';//some parentId of a folder under which to create the new folder
+    var fileMetadata = {
+        'name': 'New Folder',
+        'mimeType': 'application/vnd.google-apps.folder',
+        'parents': [parentId]
+    };
+    gapi.client.drive.files.create({
+        resource: fileMetadata,
+    }).then(function (response) {
+        switch (response.status) {
+            case 200:
+                var file = response.result;
+                console.log('Created Folder Id: ', file.id);
+                break;
+            default:
+                console.log('Error creating the folder, ' + response);
+                break;
+        }
+    });
+
     var fileMetadata = {
         'name': 'photo.jpg'
     };
