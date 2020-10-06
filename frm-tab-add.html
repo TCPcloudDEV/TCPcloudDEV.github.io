@@ -1,0 +1,74 @@
+<form id="frmAddProp">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="tbCustLastName" data-required>
+        <label class="mdl-textfield__label" for="tbCustLastName">Last Name</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="tbCustFirstName" data-required>
+        <label class="mdl-textfield__label" for="tbCustFirstName">First Name</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="tbCustAddr" data-required>
+        <label class="mdl-textfield__label" for="tbCustAddr">Address</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="tbCustCity" data-required>
+        <label class="mdl-textfield__label" for="tbCustCity">City</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="tel" id="tbCustPhone" data-required>
+        <label class="mdl-textfield__label" for="tbCustPhone">Phone #</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="email" id="tbCustEmail">
+        <label class="mdl-textfield__label" for="tbCustEmail">E-mail</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <textarea class="mdl-textfield__input" type="text" rows="3" id="tbJobClaimNum" data-required></textarea>
+        <label class="mdl-textfield__label" for="tbJobClaimNum">
+            Claim #
+        </label>
+        <span class="mdl-tooltip" for="tbJobClaimNum">
+            Claim # (Insurance Company, Adjuster Name and contact info)
+        </span>
+    </div>
+    <div class="dropdown">
+        <span>Is split?</span>
+        <select id="ddJobSplitType" data-required></select>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <textarea class="mdl-textfield__input" type="text" rows="3" id="tbJobScope" data-required></textarea>
+        <label class="mdl-textfield__label" for="tbJobScope">
+            Scope description
+        </label>
+        <span for="tbJobScope" class="mdl-tooltip">
+            Scope description (Wind/Hail/Roof/Siding/Windows / Gutters/Paint/Deck/Discontinued)
+        </span>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <textarea class="mdl-textfield__input" type="text" rows="3" id="tbJobNotes"></textarea>
+        <label class="mdl-textfield__label" for="tbJobNotes">
+            Additional notes
+        </label>
+    </div>
+    <div class="dropdown">
+        <span>Status</span>
+        <select id="ddJobClaimStatus" data-required></select>
+    </div>
+    <br>
+    <br>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="add-job-bttn" type="submit"
+            onclick="addJob(event)">
+        Save
+    </button>
+</form>
+<br /><br /><br />
+<!-- NIU -->
+<div hidden=true>
+    <center>
+        <p><button onclick="getStream()">Activate camera</button></p>
+        <p><video autoplay style="width: 240px; height: 180px; border: inset;"></video></p>
+        <p><button onclick="takePhoto()">Take Photo</button></p>
+        <p><img id="imgCtrl" width="240" height="180" onclick="savePhoto()"></p>
+    </center>
+</div>

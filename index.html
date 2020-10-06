@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ECS Sales rep form</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="vendor/mdl/material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="vendor/mdl/material.min.js"></script>
+    <link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16" />
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">ECS Sales rep form</span> <!-- Title -->
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="#" id="bttnSignout">Logout</a>
+                </nav>
+            </div>
+        </header>
+        
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="flex-container">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="bttnAuthorize">Login</button>
+                    <div class="mdl-spinner mdl-js-spinner is-active" id="divFormLoader"></div>
+
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" id="divFormTabs">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#divTabAdd" class="mdl-tabs__tab is-active"> Add/Edit property</a>
+                            <a href="#divTabList" class="mdl-tabs__tab"> View properties </a>
+                        </div>
+
+                        <div class="mdl-tabs__panel is-active" id="divTabAdd">
+                        </div>
+
+                        <div class="mdl-tabs__panel" id="divTabList">
+                        </div>
+                    </div>
+
+                </div>
+                <div id="divToastCntnr" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                </div>
+            </div>
+
+            <footer class="footer">
+                Copyright 2020 <a href="https://www.estateclaimservices.com/contact.html">Estate Claim Services, LLC</a> - All Rights Reserved.&nbsp;<a href="https://www.estateclaimservices.com/privacy-notice.html">Privacy Notice</a>&emsp;Ver: <label id="lblVer" />
+            </footer>
+        </main>
+    </div>
+
+    <script type="text/javascript" src="register-serviceworker.js"></script>
+    <script type="text/javascript" src="utils.js"></script>
+    <script type="text/javascript" src="init.js"></script>
+    
+    <script type="text/javascript" src="frm-tab-add.js"></script>
+    <script type="text/javascript" src="frm-tab-list.js"></script>
+
+
+    <script type="text/javascript" src="vendor/sorttable/sort-table.js"></script>
+
+    <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
+</body>
+
+</html>

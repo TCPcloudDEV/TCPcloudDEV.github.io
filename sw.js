@@ -3,17 +3,20 @@ var urlsToCache = [
     "style.css",
     "icons/favicon-32x32.png",
     "icons/favicon-16x16.png",
+    "utils.js",    
     "init.js",
-    "utils.js",
-    "add-property.js",
-    "list-properties.js",
-    "vendor/mdl/material.min.js", // https://getmdl.io/components/index.html
+    "frm-tab-add.js",
+    "frm-tab-add.html",
+    "frm-tab-list.js",    
+    "frm-tab-list.html",
+    "vendor/mdl/material.min.js", // FYI: https://getmdl.io/components/index.html
     "vendor/mdl/material.min.css",
     "vendor/sorttable/sort-table.min.js"
 ];
 
 
 // cache after the first install
+
 self.addEventListener("install", function(event) {
   // Perform install steps
   event.waitUntil(
@@ -34,6 +37,7 @@ self.addEventListener("fetch", function (event) {
           // cache same host files only
           if (
             requestURL.hostname === "tcpclouddev.github.io" || // TODO ECS:
+            requestURL.hostname === "meteor-spectrum-pencil.glitch.me" ||
             requestURL.hostname === "localhost"
           )
             cache.put(event.request, networkResponse.clone());

@@ -12,14 +12,14 @@ body {
   width: 100vw;
 }
 
-#add-property-form, #list-properties-form {
+#frmAddProp, #frmListProps {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 15px;
 }
 
-#authorize-bttn {
+#bttnAuthorize {
   display: none;
   margin: auto;
   font-size: 1.5em;
@@ -39,11 +39,11 @@ body {
   font-size: 12px;
 }
 
-#forms, #signout-button {
+#divFormTabs, #bttnSignout {
   display: none;
 }
 
-#form-loader {
+#divFormLoader {
   margin: auto;
 }
 

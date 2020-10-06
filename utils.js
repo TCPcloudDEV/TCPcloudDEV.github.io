@@ -12,8 +12,36 @@
         return false;
     }
 
+    
+    // #####
+    // ## Class::CSupport::checkFetchError (resp)
+    /*
+        fetch(url).then((resp) => {
+            // Always gets a response, unless there is network error
+            // It never throws an error for 4xx or 5xx response 😟
+        }).catch((error) => {
+            // Only network error comes here
+        });
+
+        
+        // Now call the function inside fetch promise resolver
+        fetch(url)
+            .then(CSupport.checkFetchError)
+            .then((data) => {
+            }).catch((error) => {
+            });
+    */
+    function checkFetchError(resp) {
+        if (resp.status >= 200 && resp.status <= 299) {
+            return resp.text();
+        } else {
+            throw Error(resp.status +"\nMessage: "+ resp.statusText);
+        }
+    }
+
 
     window.CSupport = window.CSupport || {
+        checkFetchError,
         isEmpty
     };
 })();
@@ -154,7 +182,11 @@
     function showError(msg) {
         console.error(" -E- " + msg);
 
-        alert("Error\n\n   " + msg);
+        var szErrMsgPrefix = "Error:";
+        if (msg.indexOf (szErrMsgPrefix) == -1)
+            msg = szErrMsgPrefix +"\n\n   " + msg;
+
+        alert(msg);
     }
 
 
@@ -173,5 +205,4 @@
         showError
     };
 })();
-
 

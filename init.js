@@ -1,32 +1,57 @@
-const verId = "0.60";
+const cVER_ID = "0.67";
 const cECS_URL = "https://www.estateclaimservices.com/contact.html";
+
 
 //const cERROR_0001
 
-const cWARN_0001 = "Something went wrong.";
+const cWARN_0001 = "Something went wrong";
 
 const cINFO_0001 = "The required spreadsheet is missing.";
+
+
+const cDESKTOP_MIN_WITH = 700;
+var gl_bDispModeMobile = false;
+var gl_bDispModeSwitched = false;
 
 
 (function () {
     const utils = window.ECSSales.utils;
     const getElmById = document.getElementById.bind(document);
 
-
     const cSHEET_NAME = "ECS_Sales (Responses)_WIP"; // TODO ECS:
     const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
     const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
+    const oAuthBttn = getElmById("bttnAuthorize");
+    const oSignoutBttn = getElmById("bttnSignout");
+    const oFormTabs = getElmById("divFormTabs");
+    const oFormLoader = getElmById("divFormLoader");
+    const oSnackbar = getElmById("divToastCntnr");
+    
 
-    const oAuthBttn = getElmById("authorize-bttn");
-    const oSignoutBttn = getElmById("signout-button");
-    const oForms = getElmById("forms");
-    const oFormLoader = getElmById("form-loader");
-    const oSnackbar = getElmById("toast-container");
+    getElmById("lblVer").innerHTML = cVER_ID;
 
-    getElmById("lblVer").innerHTML = verId;
+    fetch("./frm-tab-add.html")
+        .then(CSupport.checkFetchError)
+        .then(data => {
+            getElmById("divTabAdd").innerHTML = data;
+        }).catch((error) => {
+            var msg = cWARN_0001 +" while loading divTabAdd. \n\n"+ error;
 
-    utils.hideLoader = utils.hideLoader.bind(null, oForms, oFormLoader);
-    utils.showLoader = utils.showLoader.bind(null, oForms, oFormLoader);
+            utils.showError (msg);
+        });
+
+    fetch("./frm-tab-list.html")
+        .then(CSupport.checkFetchError)
+        .then(data => {
+            getElmById("divTabList").innerHTML = data;
+        }).catch((error) => {
+            var msg = cWARN_0001 +" while loading divTabList. \n\n"+ error;
+
+            utils.showError (msg);
+        });
+
+    utils.hideLoader = utils.hideLoader.bind(null, oFormTabs, oFormLoader);
+    utils.showLoader = utils.showLoader.bind(null, oFormTabs, oFormLoader);
 
 
     /**
@@ -85,6 +110,15 @@ const cINFO_0001 = "The required spreadsheet is missing.";
                 oAuthBttn.onclick = handleAuthClick.bind(null);
                 oSignoutBttn.onclick = handleSignoutClick.bind(null);
             });
+
+        isMobile();
+
+        window.addEventListener("resize", () => {
+            isMobile();
+
+            if (gl_bDispModeSwitched)
+                window.ECSSales.ListPropertiesForm.init();
+        });
     }
 
 
@@ -98,7 +132,7 @@ const cINFO_0001 = "The required spreadsheet is missing.";
         } else {
             utils.showElm(oAuthBttn);
             utils.hideElm(oSignoutBttn);
-            utils.hideElm(oForms);
+            utils.hideElm(oFormTabs);
             utils.hideElm(oFormLoader);
         }
     }
@@ -157,6 +191,16 @@ const cINFO_0001 = "The required spreadsheet is missing.";
     }
 
 
+    function isMobile() {
+        var bMobilePrev = gl_bDispModeMobile;
+
+        gl_bDispModeMobile = window.innerWidth < cDESKTOP_MIN_WITH;
+        gl_bDispModeSwitched = bMobilePrev != gl_bDispModeMobile;
+
+        return gl_bDispModeMobile;
+    }
+
+
     function initApp(data) {
         utils.hideLoader();
 
@@ -166,9 +210,10 @@ const cINFO_0001 = "The required spreadsheet is missing.";
             data.jobClaimStatuses
         );
 
-        window.ECSSales.ListPropertiesForm.init(data.sheetID);
-
         utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
+        window.ECSSales.ListPropertiesForm.init = window.ECSSales.ListPropertiesForm.init.bind(null, data.sheetID);
+   
+        window.ECSSales.ListPropertiesForm.init();
     }
 
 

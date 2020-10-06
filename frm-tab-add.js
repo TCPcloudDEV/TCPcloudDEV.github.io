@@ -1,27 +1,14 @@
 const utils = window.ECSSales.utils;
-
 const getElmById = document.getElementById.bind(document);
-const oAddPropertyForm = getElmById("add-property-form");
-const oCustLastName = getElmById("cust-last-name");
-const oCustFirstName = getElmById("cust-first-name");
-const oCustAddr = getElmById("cust-addr");
-const oCustCity = getElmById("cust-city");
-const oCustPhone = getElmById("cust-phone");
-const oCustEmail = getElmById("cust-email");
-const oCustClaimNum = getElmById("job-claim-num");
-const oJobSplitType = getElmById("job-split-type");
-const oJobScope = getElmById("job-scope");
-const oJobNotes = getElmById("job-notes");
-const oClaimStatus = getElmById("job-claim-status");
 
-const oAddJobBttn = getElmById("add-job-bttn");
-const oSnackbar = getElmById("toast-container");
 
-var oCamStrm;
-var gl_sheetId; // !!!
+//var oCamStrm;
 
 (function () {
     function init(sheetID, jobSplitTypes, jobClaimStatuses) {
+        const oJobSplitType = getElmById("ddJobSplitType");
+        const oClaimStatus = getElmById("ddJobClaimStatus");
+        
         // initialize dropdowns
         oJobSplitType.innerHTML = jobSplitTypes.map(utils.wrapInOption).join();
         oClaimStatus.innerHTML = jobClaimStatuses.map(utils.wrapInOption).join();
@@ -29,9 +16,7 @@ var gl_sheetId; // !!!
         oJobSplitType.value = "";
         oClaimStatus.value = "";
 
-        gl_sheetId = sheetID;
-
-        //oAddJobBttn.onclick = addJob.bind(null); -- setting this way blocks "Please fill out this field" notification, used onclick="addJob()" instead
+        //oAddJobBttn.onclick = addJob.bind(null); //-- setting this way blocks "Please fill out this field" notification, used onclick="addJob()" instead
     }
 
 
@@ -42,6 +27,20 @@ var gl_sheetId; // !!!
 
 
 function addJob(event) {
+    const oAddPropertyForm = getElmById("frmAddProp");
+    const oCustLastName = getElmById("tbCustLastName");
+    const oCustFirstName = getElmById("tbCustFirstName");
+    const oCustAddr = getElmById("tbCustAddr");
+    const oCustCity = getElmById("tbCustCity");
+    const oCustPhone = getElmById("tbCustPhone");
+    const oCustEmail = getElmById("tbCustEmail");
+    const oCustClaimNum = getElmById("tbJobClaimNum");
+    const oJobSplitType = getElmById("ddJobSplitType");
+    const oJobScope = getElmById("tbJobScope");
+    const oJobNotes = getElmById("tbJobNotes");
+    const oClaimStatus = getElmById("ddJobClaimStatus");  
+    const oSnackbar = getElmById("divToastCntnr");
+
     try {
         if (!oAddPropertyForm.checkValidity()) return false;
 
@@ -54,7 +53,7 @@ function addJob(event) {
             .append(
                 utils.appendRequestObj([
                     [
-                        `=DATE(${now.getFullYear()}, ${now.getMonth()}, ${now.getDate()}) + TIME(${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()})`,
+                        `=DATE(${now.getFullYear()}, ${now.getMonth() + 1}, ${now.getDate()}) + TIME(${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()})`,
                         oCustLastName.value,
                         oCustFirstName.value,
                         oCustAddr.value,
@@ -87,12 +86,12 @@ function addJob(event) {
                     utils.showMsg(oSnackbar, "Property added.");
                     utils.hideLoader();
 
-                    window.ECSSales.ListPropertiesForm.init(gl_sheetId);
+                    window.ECSSales.ListPropertiesForm.init();
                 },
                 response => {
                     utils.hideLoader();
 
-                    let message = cWARN_0001 +" "+ response.result.error.message;
+                    let message = cWARN_0001 +". "+ response.result.error.message;
                     if (response.status === 403) {
                         message = cINFO_0001;
                     }
@@ -107,7 +106,7 @@ function addJob(event) {
     }
 }
 
-
+/* NIU
 function getUserMedia(options, successCallback, failureCallback) {
     var api = navigator.getUserMedia || navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia || navigator.msGetUserMedia;
@@ -211,5 +210,5 @@ function savePhoto() {
         } else {
             console.log('File Id: ', file.id);
         }
-    });*/
-}
+    });**
+}*/
