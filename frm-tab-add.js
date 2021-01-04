@@ -1,22 +1,18 @@
-const utils = window.ECSSales.utils;
-const getElmById = document.getElementById.bind(document);
-
-
 //var oCamStrm;
 
+
 (function () {
-    function init(sheetID, jobSplitTypes, jobClaimStatuses) {
+    function init(jobSplitTypes, jobClaimStatuses) {
         const oJobSplitType = getElmById("ddJobSplitType");
         const oClaimStatus = getElmById("ddJobClaimStatus");
-        
+
         // initialize dropdowns
         oJobSplitType.innerHTML = jobSplitTypes.map(utils.wrapInOption).join();
         oClaimStatus.innerHTML = jobClaimStatuses.map(utils.wrapInOption).join();
 
-        oJobSplitType.value = "";
-        oClaimStatus.value = "";
+        clearFlds();
 
-        //oAddJobBttn.onclick = addJob.bind(null); //-- setting this way blocks "Please fill out this field" notification, used onclick="addJob()" instead
+        //getElmById("bttnAddJob").onclick = addJob.bind(null); //-- setting this way blocks "Please fill out this field" notification, used onclick="addJob()" instead
     }
 
 
@@ -26,8 +22,7 @@ const getElmById = document.getElementById.bind(document);
 })();
 
 
-function addJob(event) {
-    const oAddPropertyForm = getElmById("frmAddProp");
+function clearFlds() {
     const oCustLastName = getElmById("tbCustLastName");
     const oCustFirstName = getElmById("tbCustFirstName");
     const oCustAddr = getElmById("tbCustAddr");
@@ -38,10 +33,42 @@ function addJob(event) {
     const oJobSplitType = getElmById("ddJobSplitType");
     const oJobScope = getElmById("tbJobScope");
     const oJobNotes = getElmById("tbJobNotes");
-    const oClaimStatus = getElmById("ddJobClaimStatus");  
-    const oSnackbar = getElmById("divToastCntnr");
+    const oClaimStatus = getElmById("ddJobClaimStatus"); 
 
+    oCustLastName.value = "";
+    oCustFirstName.value = "";
+    oCustAddr.value = "";
+    oCustCity.value = "";
+    oCustPhone.value = "";
+    oCustEmail.value = "";
+    oCustClaimNum.value = "";
+    oJobSplitType.value = "";
+    oJobScope.value = "";
+    oJobNotes.value = "";
+    oClaimStatus.value = "";
+
+    oCustLastName.disabled = false;
+
+    gl_indxEditProp = -1;
+}
+
+
+function addJob(event) {
     try {
+        const oAddPropertyForm = getElmById("frmAddProp");
+        const oCustLastName = getElmById("tbCustLastName");
+        const oCustFirstName = getElmById("tbCustFirstName");
+        const oCustAddr = getElmById("tbCustAddr");
+        const oCustCity = getElmById("tbCustCity");
+        const oCustPhone = getElmById("tbCustPhone");
+        const oCustEmail = getElmById("tbCustEmail");
+        const oCustClaimNum = getElmById("tbJobClaimNum");
+        const oJobSplitType = getElmById("ddJobSplitType");
+        const oJobScope = getElmById("tbJobScope");
+        const oJobNotes = getElmById("tbJobNotes");
+        const oClaimStatus = getElmById("ddJobClaimStatus");  
+        const oSnackbar = getElmById("divToastCntnr");
+
         if (!oAddPropertyForm.checkValidity()) return false;
 
         event.preventDefault();
@@ -49,11 +76,58 @@ function addJob(event) {
 
         var now = new Date();
 
-        gapi.client.sheets.spreadsheets.values
-            .append(
-                utils.appendRequestObj([
+        if (gl_indxEditProp == -1) {
+            gapi.client.sheets.spreadsheets.values
+                .append(
+                    utils.appendRequestObj(cPROPS_TBL_RANGE, [
+                        [
+                            `=DATE(${now.getFullYear()}, ${now.getMonth() + 1}, ${now.getDate()}) + TIME(${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()})`,
+                            oCustLastName.value,
+                            oCustFirstName.value,
+                            oCustAddr.value,
+                            oCustCity.value,
+                            oCustPhone.value,
+                            oCustEmail.value,
+                            oCustClaimNum.value,
+                            oJobSplitType.value,
+                            oJobScope.value,
+                            oJobNotes.value,
+                            oClaimStatus.value
+                        ]
+                    ])
+                )
+                .then(
+                    response => {
+                        // reset fileds
+                        clearFlds();
+
+                        utils.showMsg(oSnackbar, "Property added.");
+                        utils.hideLoader();
+
+                        window.ECSSales.ListPropertiesForm.init();
+                    },
+                    response => {
+                        utils.hideLoader();
+
+                        let message = cWARN_0001 +". "+ response.result.error.message;
+                        if (response.status === 403) {
+                            message = cINFO_0001;
+                        }
+
+                        console.log(response);
+
+                        utils.showWarnWithDtls(oSnackbar, message);
+                    }
+                );
+        } else {
+            let rowIndx = cPROPS_TBL_1ST_ROW + gl_indxEditProp;
+            let propRange = cPROPS_TBL_1ST_CLMN + rowIndx;
+
+            gapi.client.sheets.spreadsheets.values
+            .update(
+                utils.updateRequestObj(propRange, [
                     [
-                        `=DATE(${now.getFullYear()}, ${now.getMonth() + 1}, ${now.getDate()}) + TIME(${now.getHours()}, ${now.getMinutes()}, ${now.getSeconds()})`,
+                        gl_aPropsInfo[gl_indxEditProp][0],
                         oCustLastName.value,
                         oCustFirstName.value,
                         oCustAddr.value,
@@ -71,19 +145,9 @@ function addJob(event) {
             .then(
                 response => {
                     // reset fileds
-                    oCustLastName.value = "";
-                    oCustFirstName.value = "";
-                    oCustAddr.value = "";
-                    oCustCity.value = "";
-                    oCustPhone.value = "";
-                    oCustEmail.value = "";
-                    oCustClaimNum.value = "";
-                    oJobSplitType.value = "";
-                    oJobScope.value = "";
-                    oJobNotes.value = "";
-                    oClaimStatus.value = "";
+                    clearFlds();
 
-                    utils.showMsg(oSnackbar, "Property added.");
+                    utils.showMsg(oSnackbar, "Property updated.");
                     utils.hideLoader();
 
                     window.ECSSales.ListPropertiesForm.init();
@@ -99,12 +163,33 @@ function addJob(event) {
                     console.log(response);
 
                     utils.showWarnWithDtls(oSnackbar, message);
-                 }
-            );
+                }
+            );            
+        }
     } catch (err) {
         utils.showError(err.message);
     }
 }
+
+
+function execute() {
+    // https://developers.google.com/drive/api/v2/search-files#node.js
+    // q: "mimeType='application/vnd.google-apps.folder'"
+    // q: "mimeType='image/jpeg'"
+    var lll = gapi.client.drive.files.list(
+        {
+            q: "mimeType='application/vnd.google-apps.folder' and name='ECS'",
+        })
+        .then(function(response) {
+        // Handle the results here (response.result has the parsed body).
+        console.log("Response", response);
+        return response;
+        },
+        function(err) { console.error("Execute error", err); });
+
+        var iii = lll.result.files[0].id;
+}
+
 
 /* NIU
 function getUserMedia(options, successCallback, failureCallback) {

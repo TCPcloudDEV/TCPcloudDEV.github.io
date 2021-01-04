@@ -50,11 +50,6 @@
 (function () {
     const CSupport = window.CSupport; // CSupport should be defined before declaring variable
 
-    function hideElm(oElm) {
-        oElm.style.display = "none";
-    }
-
-
     /**
     * @param  {DOMElement} oElm
     * @param  {String} displayStyle - (optional) flex, inline
@@ -64,9 +59,15 @@
     }
 
 
+    function hideElm(oElm) {
+        oElm.style.display = "none";
+    }
+
+
     /**
     * show loader, hide forms
     */
+
     function showLoader(oForms, oFormLoader) {
         hideElm(oForms);
         showElm(oFormLoader);
@@ -82,22 +83,32 @@
     }
 
 
+    //MDL Text Input Cleanup
+    function mdlCleanUpTb() {
+        var mdlInputs = document.querySelectorAll('.mdl-js-textfield');
+        for (var i = 0, l = mdlInputs.length; i < l; i++) {
+            mdlInputs[i].MaterialTextfield.checkDirty();
+        }  
+    }
+
+
     /**
     * Generate append request object - for given sheet and values to append
     * Docs: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append
     *
     * @param {String} spreadsheetId sheet ID
+    * @param {String} range range
     * @param {Array} values values to be appended
     * @returns {Object} request object for append
     */
-    function appendRequestObj(spreadsheetId, values) {
+    function appendRequestObj(spreadsheetId, range, values) {
         return {
             // The ID of the spreadsheet to update.
             spreadsheetId,
 
             // The A1 notation of a range to search for a logical table of data.
             // Values will be appended after the last row of the table.
-            range: "Pipeline!A3",
+            range: range,
 
             includeValuesInResponse: true,
 
@@ -118,11 +129,27 @@
     }
 
 
+    function updateRequestObj(spreadsheetId, range, values) {
+        return {
+            spreadsheetId,
+            range: range,
+            includeValuesInResponse: true,
+            responseDateTimeRenderOption: "FORMATTED_STRING",
+            responseValueRenderOption: "FORMATTED_VALUE",
+            valueInputOption: "USER_ENTERED",
+
+            resource: {
+                values
+            }            
+        };      
+    }
+
+
     /**
     * Generate batchGet request object - for given sheet, and range.
     * Docs: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/batchGet
     *
-    * @param {String} sheetID sheet ID
+    * @param {String} spreadsheetId sheet ID
     * @param {Array} ranges List of ranges in A1 notation
     * @returns {Object} request object for batchGet
     */
@@ -196,10 +223,12 @@
         hideElm,
         hideLoader,
         showLoader,
-        wrapInOption,
+        mdlCleanUpTb,
+        appendRequestObj,
+        updateRequestObj,
         batchGetRequestObj,
         getRequestObj,
-        appendRequestObj,
+        wrapInOption,
         showMsg,
         showWarnWithDtls,
         showError

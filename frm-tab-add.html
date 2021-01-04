@@ -57,13 +57,24 @@
     </div>
     <br>
     <br>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="add-job-bttn" type="submit"
-            onclick="addJob(event)">
-        Save
-    </button>
+    <span>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="bttnClearFlds"
+                type="submit" onclick="clearFlds()">
+            Clear
+        </button>
+        &emsp;&emsp;
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="bttnAddJob"
+                type="submit" onclick="addJob(event)">
+            Save
+        </button>
+    </span>
 </form>
 <br /><br /><br />
 <!-- NIU -->
+<center>
+    <p><button onclick="execute()">Activate camera</button></p>
+</center>
+
 <div hidden=true>
     <center>
         <p><button onclick="getStream()">Activate camera</button></p>

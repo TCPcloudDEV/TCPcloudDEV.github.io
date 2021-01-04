@@ -1,5 +1,8 @@
-const cVER_ID = "0.67";
+const cVER_ID = "0.73";
 const cECS_URL = "https://www.estateclaimservices.com/contact.html";
+
+const utils = window.ECSSales.utils;
+const getElmById = document.getElementById.bind(document);
 
 
 //const cERROR_0001
@@ -9,15 +12,20 @@ const cWARN_0001 = "Something went wrong";
 const cINFO_0001 = "The required spreadsheet is missing.";
 
 
+const cPROPS_TBL_1ST_CLMN = "Pipeline!A";
+const cPROPS_TBL_1ST_ROW = 3;
+const cPROPS_TBL_RANGE = cPROPS_TBL_1ST_CLMN + cPROPS_TBL_1ST_ROW +":L";
+
+
 const cDESKTOP_MIN_WITH = 700;
 var gl_bDispModeMobile = false;
 var gl_bDispModeSwitched = false;
 
+var gl_aPropsInfo = null;
+var gl_indxEditProp = -1; 
+
 
 (function () {
-    const utils = window.ECSSales.utils;
-    const getElmById = document.getElementById.bind(document);
-
     const cSHEET_NAME = "ECS_Sales (Responses)_WIP"; // TODO ECS:
     const cJOB_SPLIT_TYPE_RANGE = "cfg!C5:C";
     const cJOB_CLAIM_STATUS_RANGE = "cfg!A5:A";
@@ -145,7 +153,7 @@ var gl_bDispModeSwitched = false;
         utils.hideElm(oAuthBttn);
         utils.showElm(oSignoutBttn);
 
-        getSheetID(cSHEET_NAME)
+        getSheetId(cSHEET_NAME)
             .then(getJobStatusAndMore, sheetNotFound)
             .then(initApp);
 
@@ -161,7 +169,7 @@ var gl_bDispModeSwitched = false;
     * @param {String} sheetName Sheet name to search in user's drive
     * @returns {Promise} a promise resolves successfully with sheetID if it's available in user's drive
     */
-    function getSheetID(sheetName) {
+    function getSheetId(sheetName) {
         return new Promise((resolve, reject) => {
           gapi.client.drive.files
             .list({
@@ -176,16 +184,16 @@ var gl_bDispModeSwitched = false;
     }
 
 
-    function getJobStatusAndMore(sheetID) {
+    function getJobStatusAndMore(sheetId) {
         return new Promise((resolve, reject) => {
             gapi.client.sheets.spreadsheets.values
             .batchGet(
-                utils.batchGetRequestObj(sheetID, [cJOB_SPLIT_TYPE_RANGE, cJOB_CLAIM_STATUS_RANGE])
+                utils.batchGetRequestObj(sheetId, [cJOB_SPLIT_TYPE_RANGE, cJOB_CLAIM_STATUS_RANGE])
             )
             .then(response => {
                 const jobSplitTypes = response.result.valueRanges[0].values[0];
                 const jobClaimStatuses = response.result.valueRanges[1].values[0];
-                resolve({ sheetID, jobSplitTypes, jobClaimStatuses });
+                resolve({ sheetId, jobSplitTypes, jobClaimStatuses });
             });
         });
     }
@@ -205,13 +213,13 @@ var gl_bDispModeSwitched = false;
         utils.hideLoader();
 
         window.ECSSales.AddPropertyForm.init(
-            data.sheetID,
             data.jobSplitTypes,
             data.jobClaimStatuses
         );
 
-        utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetID);
-        window.ECSSales.ListPropertiesForm.init = window.ECSSales.ListPropertiesForm.init.bind(null, data.sheetID);
+        utils.appendRequestObj = utils.appendRequestObj.bind(null, data.sheetId);
+        utils.updateRequestObj = utils.updateRequestObj.bind(null, data.sheetId);
+        window.ECSSales.ListPropertiesForm.init = window.ECSSales.ListPropertiesForm.init.bind(null, data.sheetId);
    
         window.ECSSales.ListPropertiesForm.init();
     }
