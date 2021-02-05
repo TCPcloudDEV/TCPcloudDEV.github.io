@@ -81,7 +81,9 @@ function authenticate() {
             processSignin();
         },
             function (err) {
-                alert("Failed to sign-in3:", err.name + " m: " + err.message + " s: " + err.toString());
+                alert("Failed to sign-in4:" + err.name);
+                alert("Failed to sign-in4m:" + err.message);
+                alert("Failed to sign-in4s:"+ err.toString());
                 showError ("Failed to sign-in.", err);
             });
 }
