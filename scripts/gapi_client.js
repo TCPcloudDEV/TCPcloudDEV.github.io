@@ -81,6 +81,7 @@ function authenticate() {
             processSignin();
         },
             function (err) {
+                alert("Failed to sign-in: " + err.msg);
                 showError ("Failed to sign-in.", err);
             });
 }
