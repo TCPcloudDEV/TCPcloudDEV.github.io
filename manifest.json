@@ -1,6 +1,6 @@
 {
-  "name": "BlazorWebAssebly",
-  "short_name": "BlazorWebAssebly",
+  "name": "YouTubePlaylistBackup",
+  "short_name": "YouTubePlaylistBackup",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
