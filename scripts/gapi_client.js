@@ -29,7 +29,7 @@ window.signOut = () => {
 
 function init() {
     gapi.load("client:auth2", function () {
-        gapi.auth2.init({ client_id: "323996053258-3smc60hane62th9l0nm9dupoin6v15qd.apps.googleusercontent.com" }); // cnfg !!!
+        gapi.auth2.init({ client_id: "323996053258-3smc60hane62th9l0nm9dupoin6v15qd.apps.googleusercontent.com" }); // cnfg !!! !!!
     });
 }
 
@@ -67,10 +67,10 @@ function processSignout() {
 }
 
 
-function showError(msg, err) {
-    console.error(msg, err);
+function showError(title, msg) {
+    console.error(title, msg);
 
-    JsToDotNetBridge.showErrorJs(msg);
+    JsToDotNetBridge.showErrorJs(title, msg);
 }
 
 
@@ -81,9 +81,6 @@ function authenticate() {
             processSignin();
         },
             function (err) {
-                alert("Failed to sign-in4:" + err.name);
-                alert("Failed to sign-in4m:" + err.message);
-                alert("Failed to sign-in4s:"+ err.toString());
-                showError ("Failed to sign-in.", err);
+                showError("Failed to sign-in.", err.error);
             });
 }
